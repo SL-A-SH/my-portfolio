@@ -1,5 +1,6 @@
 // components/sections/Projects.jsx
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { projects } from '../../constants/projects';
 import FeatureGrid from '../FeatureGrid';
 
@@ -69,6 +70,12 @@ const ProjectMedia = ({ project }) => {
 };
 
 const Projects = () => {
+  const navigate = useNavigate();
+
+  const handleProjectClick = (projectId) => {
+    navigate(`/project/${projectId}`);
+  };
+
   const categories = [...new Set(projects.map(project => project.category))];
   const [activeCategory, setActiveCategory] = useState('All');
 
@@ -113,7 +120,8 @@ const Projects = () => {
           {filteredProjects.map((project) => (
             <div 
               key={project.id} 
-              className="bg-[#1a1f2b] rounded-lg overflow-hidden shadow-xl transition-transform hover:scale-105"
+              className="bg-[#1a1f2b] rounded-lg overflow-hidden shadow-xl transition-transform hover:scale-105 cursor-pointer group"
+              onClick={() => handleProjectClick(project.id)}
             >
               <div className="relative">
                 <ProjectMedia project={project} />
@@ -124,6 +132,7 @@ const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center bg-blue-800 hover:bg-blue-200 text-white px-3 py-1 rounded text-sm"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       Demo
                     </a>
@@ -134,6 +143,7 @@ const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center bg-blue-800 hover:bg-blue-200 text-white px-3 py-1 rounded text-sm"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       Code
                     </a>
@@ -147,7 +157,7 @@ const Projects = () => {
                     {project.role}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">{project.title}</h3>
                 <p className="text-gray-300 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, index) => (

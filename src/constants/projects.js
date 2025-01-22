@@ -24,12 +24,11 @@ export const projects = [
     technicalDetails: `Developed using Unreal Engine 5, implementing advanced character controllers
     and combat mechanics using C++ and Blueprints. Features custom animation systems and
     optimized environment streaming for seamless open-world exploration.`,
-    timeline: '2024',
+    timeline: 'July 2023 - Oct 2023',
     role: 'Gameplay Programmer',
     challenges: [
       'Implementing responsive combat mechanics',
       'Creating diverse enemy AI behaviors',
-      'Optimizing open world performance'
     ]
   },
   {
@@ -57,10 +56,9 @@ export const projects = [
     ],
     technicalDetails: `Built in Unreal Engine 5, featuring advanced weapon systems, inventory 
     management, and enemy AI. Implements optimized pickup systems and resource management.`,
-    timeline: '2024',
+    timeline: 'Dec 2023 - Apr 2023',
     role: 'Gameplay Programmer',
     challenges: [
-      'Balancing weapon mechanics and combat',
       'Implementing complex inventory system',
       'Creating engaging enemy AI behaviors'
     ]
@@ -89,7 +87,7 @@ export const projects = [
     ],
     technicalDetails: `Created in Unreal Engine, featuring procedural level generation and 
     refined player mechanics. Implements smooth character animations and atmospheric lighting.`,
-    timeline: '2024',
+    timeline: '6th Jan 2025 - 19th Jan 2025',
     role: 'Gameplay Programmer',
     challenges: [
       'Implementing procedural level generation',
@@ -122,7 +120,7 @@ export const projects = [
     ],
     technicalDetails: `Developed using a custom game engine and OpenGL, implementing both 
     single-player and multiplayer functionality. Features networked gameplay for score competition.`,
-    timeline: '2023',
+    timeline: '18th Nov 2024 - 13th Dec 2024',
     role: 'Developer',
     challenges: [
       'Working with custom game engine',
@@ -157,7 +155,7 @@ export const projects = [
     technicalDetails: `Created using OpenGL, implementing advanced graphics techniques including 
     custom shaders, lighting systems, and post-processing effects. Features dynamic terrain 
     modification and atmospheric effects.`,
-    timeline: '2023',
+    timeline: '21st Oct 2024- 15th Nov 2024',
     role: 'Graphics Programmer',
     challenges: [
       'Implementing complex weather systems',
@@ -196,7 +194,7 @@ export const projects = [
     challenges: [
       'Ensuring consistent functionality across platforms',
       'Implementing robust security measures',
-      'Automating build deployment process'
+      'Implementing Document Scanner and Auto-Fill'
     ]
   },
   {
@@ -206,7 +204,7 @@ export const projects = [
     description: 'A comprehensive suite of educational tools including real-time chat, video conferencing, and student management applications.',
     longDescription: `An integrated educational platform that facilitates real-time communication 
     between teachers and students through chat and video conferencing capabilities. Includes 
-    features for attendance tracking and performance monitoring.`,
+    features for attendance tracking and real time quiz system.`,
     media: {
       type: 'image',
       src: '/api/placeholder/400/300',
@@ -216,6 +214,8 @@ export const projects = [
     tags: ['React', 'React-Native', 'WebRTC', 'Redis', 'Node.js', 'AWS','MongoDB', 'WebSockets', 'Android'],
     features: [
       'Real-time chat with Redis synchronization',
+      'Real-time quiz system',
+      'Real-time document upload and download functionality',
       'Live video conferencing capabilities',
       'Student attendance tracking',
       'Test score management',
@@ -253,7 +253,7 @@ export const projects = [
       'Streamlined booking process',
       'Responsive design'
     ],
-    technicalDetails: `Built as a single-page application using React, featuring optimized 
+    technicalDetails: `Built as a single-page application using AngularJS, featuring optimized 
     performance and seamless user experience. Implements RESTful API integration for real-time 
     data handling.`,
     timeline: 'Mar 2017 - June 2017',
@@ -280,13 +280,12 @@ export const projects = [
     mediaType: 'test',
     tags: ['Android', 'React Native', 'MySQL'],
     features: [
-      'Secure user authentication',
       'Real-time test result tracking',
       'Automated attendance system',
       'Timer functionality',
       'Offline support'
     ],
-    technicalDetails: `Developed natively for Android using Kotlin and Java, with Firebase 
+    technicalDetails: `Developed for Android using React Native, with PhpMySQL 
     integration for real-time data synchronization. Features offline support and secure 
     test-taking environment.`,
     timeline: 'Mar 2021 - June 2022',
