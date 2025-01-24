@@ -6,10 +6,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 
 const App = () => {
-  const basename = process.env.PUBLIC_URL;
-
   return (
-    <Router basename={basename}>
+    <Router basename='/my-portfolio'>
       <div className="w-full min-h-screen bg-[#1e2635]">
         <Navbar />
         <Routes>
