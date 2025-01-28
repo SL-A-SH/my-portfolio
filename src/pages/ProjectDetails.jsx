@@ -88,6 +88,20 @@ const ProjectDetails = () => {
               </section>
             )}
 
+             {/* Responsibilities */}
+             {project.responsibilities && (
+              <section>
+                <h2 className="text-2xl font-semibold mb-4">My Responsibilities</h2>
+                <ul className="list-disc list-inside text-gray-300 space-y-3">
+                  {project.responsibilities.map((responsibility, index) => (
+                    <li key={index} className="pl-2">
+                      <span className="ml-1">{responsibility}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
             {/* Challenges */}
             {project.challenges && (
               <section>

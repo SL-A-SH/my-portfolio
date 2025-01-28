@@ -12,18 +12,20 @@ export const projects = [
       src: 'https://youtu.be/5R8MFhXC0Lw',
       thumbnail: '/api/placeholder/400/300'
     },
-    tags: ['Unreal Engine', 'C++', 'Blueprints', 'Game Design'],
+    tags: ['Unreal Engine', 'C++', 'Blueprints', 'AI'],
     demoLink: 'https://youtu.be/5R8MFhXC0Lw',
     codeLink: 'https://github.com/SL-A-SH/Slash',
+    responsibilities: [
+      'Developed complete gameplay systems including character movement, combat mechanics, and enemy AI from scratch using C++ and Blueprints',
+      'Implemented interactive features including sword collection, equipment system, destructible objects, player HUD and health/potion mechanics with corresponding sound effects',
+      'Created responsive combat system with enemy AI behavior, chase mechanics, and damage systems, while integrating marketplace assets for visuals and audio'
+    ],
     features: [
       'Dynamic combat system with multiple attack combinations',
       'Diverse enemy AI behaviors and combat patterns',
       'Interactive item pickup and inventory system',
       'Expansive open world environment'
     ],
-    technicalDetails: `Developed using Unreal Engine 5, implementing advanced character controllers
-    and combat mechanics using C++ and Blueprints. Features custom animation systems and
-    optimized environment streaming for seamless open-world exploration.`,
     timeline: 'July 2023 - Oct 2023',
     role: 'Gameplay Programmer',
     challenges: [
@@ -47,6 +49,11 @@ export const projects = [
     tags: ['Unreal Engine', 'C++', 'Blueprints', 'AI'],
     demoLink: 'https://youtu.be/DUZof8BJ7TM',
     codeLink: 'https://github.com/SL-A-SH/AlienInvasion',
+    responsibilities: [
+      'Developed complete gameplay systems including character movement, shooting mechanics, inventory management, and enemy AI from scratch using C++ and Blueprints',
+      'Implemented interactive features including gun collection, equipment system, explosive objects, player HUD and health/potion mechanics with corresponding sound effects',
+      'Created responsive combat system with enemy AI behavior, chase mechanics, and damage systems, while integrating marketplace assets for visuals and audio'
+    ],
     features: [
       'Multiple weapon types with unique mechanics',
       'Complex inventory management system',
@@ -54,9 +61,7 @@ export const projects = [
       'Resource management (ammo, health)',
       'Interactive environment with collectible items'
     ],
-    technicalDetails: `Built in Unreal Engine 5, featuring advanced weapon systems, inventory 
-    management, and enemy AI. Implements optimized pickup systems and resource management.`,
-    timeline: 'Dec 2023 - Apr 2023',
+    timeline: 'Dec 2023 - Apr 2024',
     role: 'Gameplay Programmer',
     challenges: [
       'Implementing complex inventory system',
@@ -85,8 +90,11 @@ export const projects = [
       'Smooth player mechanics and animations',
       'Dark-themed environment design'
     ],
-    technicalDetails: `Created in Unreal Engine, featuring procedural level generation and 
-    refined player mechanics. Implements smooth character animations and atmospheric lighting.`,
+    responsibilities: [
+      'Developed gameplay systems including character movement, shooting mechanics using C++',
+      'Implemented features such as gun collection and weapon change effects',
+      'Created a HUD for the player'
+    ],
     timeline: '6th Jan 2025 - 19th Jan 2025',
     role: 'Gameplay Programmer',
     challenges: [
@@ -98,7 +106,7 @@ export const projects = [
   {
     id: '4',
     category: 'Game Development',
-    title: 'Multiplayer Cat Maze Adventure',
+    title: 'Multiplayer Cat Maze Adventure - Advanced Game Technologies',
     description: 'A puzzle maze game where players control a cat searching for its kittens while solving puzzles and competing for high scores in multiplayer mode.',
     longDescription: `An engaging maze puzzle game combining single-player story elements with 
     multiplayer competition. Players navigate as a cat, collecting coins and finding kittens 
@@ -120,6 +128,11 @@ export const projects = [
     ],
     technicalDetails: `Developed using a custom game engine and OpenGL, implementing both 
     single-player and multiplayer functionality. Features networked gameplay for score competition.`,
+    responsibilities: [
+      'Built core game mechanics including player movement, collision detection, and scoring system using custom game engine and OpenGL',
+      'Implemented network multiplayer functionality with client-server architecture, enabling real-time competition and score synchronization',
+      'Developed game physics system including collision response, trigger zones for collectibles, and character state management'
+    ],
     timeline: '18th Nov 2024 - 13th Dec 2024',
     role: 'Developer',
     challenges: [
@@ -131,7 +144,7 @@ export const projects = [
   {
     id: '5',
     category: 'Game Development',
-    title: 'Mars Evolution Simulation',
+    title: 'Mars Evolution Simulation - Advanced Graphics for Games',
     description: 'An interactive Mars environment simulation showcasing the planets evolution with dynamic weather, lighting effects, and atmospheric transitions.',
     longDescription: `A technical demonstration showing Mars' transformation from ancient to 
     current state, featuring dynamic weather systems, day/night cycles, and special effects 
@@ -155,6 +168,11 @@ export const projects = [
     technicalDetails: `Created using OpenGL, implementing advanced graphics techniques including 
     custom shaders, lighting systems, and post-processing effects. Features dynamic terrain 
     modification and atmospheric effects.`,
+    responsibilities: [
+      'Developed advanced graphics features including custom shaders for atmospheric effects, dynamic weather systems using OpenGL',
+      'Implemented complex rendering techniques such as post-processing effects (bloom, blur), dynamic lighting, day/night cycle simulation and multiple camera angles',
+      'Created interactive elements including UFO beam effects and environmental transitions'
+    ],
     timeline: '21st Oct 2024- 15th Nov 2024',
     role: 'Graphics Programmer',
     challenges: [
@@ -178,7 +196,7 @@ export const projects = [
       alt: 'Banking application concept illustration'
     },
     mediaType: 'banking',
-    tags: ['React Native', 'iOS', 'Android', 'Node.js', 'Security', 'CI/CD'],
+    tags: ['React Native', 'iOS', 'Android', 'Python'],
     features: [
       'Cross-platform compatibility',
       'Secure authentication system',
@@ -189,7 +207,7 @@ export const projects = [
     platform-specific optimizations. Features automated CI/CD pipeline for streamlined deployment 
     and rigorous security measures compliant with banking industry standards.`,
     timeline: 'May 2019 - Apr 2021',
-    role: 'Software Developer',
+    role: 'Software Developer - Banca Sella',
     team: 'International Development Team',
     challenges: [
       'Ensuring consistent functionality across platforms',
@@ -202,7 +220,7 @@ export const projects = [
     category: 'Professional Work',
     title: 'Educational Communication Suite',
     description: 'A comprehensive suite of educational tools including real-time chat, video conferencing, and student management applications.',
-    longDescription: `An integrated educational platform that facilitates real-time communication 
+    longDescription: `An integrated educational platform developed from scratch that facilitates real-time communication 
     between teachers and students through chat and video conferencing capabilities. Includes 
     features for attendance tracking and real time quiz system.`,
     media: {
@@ -225,7 +243,7 @@ export const projects = [
     Implements Redis for message synchronization, WebRTC for video conferencing, and real-time 
     WebSocket connections for chat functionality.`,
     timeline: 'Oct 2017 - Apr 2019',
-    role: 'Software Developer',
+    role: 'Software Developer - Ahaguru',
     challenges: [
       'Implementing cross-server communication',
       'Optimizing video conferencing performance',
@@ -237,7 +255,7 @@ export const projects = [
     category: 'Professional Work',
     title: 'Hotel Booking Platform',
     description: 'A single-page web application designed to streamline and simplify the hotel booking process.',
-    longDescription: `A modern, user-friendly hotel booking platform that simplifies the process 
+    longDescription: `A modern, user-friendly hotel booking platform developed from scratch that simplifies the process 
     of finding and reserving accommodations. Features an intuitive interface and streamlined 
     booking flow.`,
     media: {
@@ -257,7 +275,7 @@ export const projects = [
     performance and seamless user experience. Implements RESTful API integration for real-time 
     data handling.`,
     timeline: 'Mar 2017 - June 2017',
-    role: 'Software Developer',
+    role: 'Software Developer - Bookingjini',
     challenges: [
       'Optimizing application performance',
       'Implementing real-time availability updates',
@@ -269,7 +287,7 @@ export const projects = [
     category: 'Professional Work',
     title: 'Mobile Test Taking Platform',
     description: 'An Android application for conducting and managing educational tests with real-time results and attendance tracking.',
-    longDescription: `A comprehensive test-taking platform developed for Android devices, 
+    longDescription: `A comprehensive test-taking platform developed from scratch for Android devices, 
     featuring secure login, real-time result tracking, and automated attendance management. 
     Designed to streamline the assessment process in educational settings.`,
     media: {
@@ -289,7 +307,7 @@ export const projects = [
     integration for real-time data synchronization. Features offline support and secure 
     test-taking environment.`,
     timeline: 'Mar 2021 - June 2022',
-    role: 'Freelance Mobile App Developer',
+    role: 'Mobile App Developer - Star Projects',
     challenges: [
       'Implementing secure test environment',
       'Ensuring real-time result synchronization',

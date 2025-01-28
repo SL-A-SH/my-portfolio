@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Hero = () => {
   return (
     <section className="pt-20 min-h-screen flex items-center w-full bg-[#1e2635] text-white">
@@ -19,12 +21,12 @@ const Hero = () => {
             >
               View Projects
             </a>
-            <a 
-              href="/contact" 
+            <Link 
+              to="/contact" 
               className="bg-[#2a2f3b] hover:bg-[#3a3f4b] px-6 py-3 rounded-lg font-medium transition-colors"
             >
               Contact Me
-            </a>
+            </Link>
           </div>
         </div>
       </div>
