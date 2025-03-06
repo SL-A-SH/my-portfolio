@@ -35,7 +35,7 @@ const Contact = () => {
                   <Mail className="w-6 h-6 text-blue-500" />
                   <div>
                     <h3 className="text-sm text-gray-400">Email</h3>
-                    <a href="mailto:your.email@example.com" className="text-gray-300 hover:text-blue-500">
+                    <a href="mailto:aqeeb.riz@gmail.com" className="text-gray-300 hover:text-blue-500">
                       aqeeb.riz@gmail.com
                     </a>
                   </div>
@@ -45,7 +45,7 @@ const Contact = () => {
                   <Github className="w-6 h-6 text-blue-500" />
                   <div>
                     <h3 className="text-sm text-gray-400">GitHub</h3>
-                    <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-500">
+                    <a href="https://github.com/SL-A-SH" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-500">
                       https://github.com/SL-A-SH
                     </a>
                   </div>
@@ -55,7 +55,7 @@ const Contact = () => {
                   <Linkedin className="w-6 h-6 text-blue-500" />
                   <div>
                     <h3 className="text-sm text-gray-400">LinkedIn</h3>
-                    <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-500">
+                    <a href="https://linkedin.com/in/aqeeb-rizwan/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-500">
                       https://www.linkedin.com/in/aqeeb-rizwan/
                     </a>
                   </div>
