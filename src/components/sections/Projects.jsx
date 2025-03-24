@@ -23,13 +23,12 @@ const ProjectMedia = ({ project }) => {
 
     return (
       <div className="relative w-full pt-[56.25%]"> {/* 16:9 Aspect Ratio */}
-        <iframe
-          className="absolute top-0 left-0 w-full h-full pointer-events-none"
-          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&mute=1&controls=0&disablekb=1&playlist=${videoId}&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3`}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          referrerpolicy="no-referrer-when-downgrade"
+        <iframe className="absolute top-0 left-0 w-full h-full pointer-events-none"
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&mute=1&amp;controls=0&disablekb=1&showinfo=0&modestbranding=1&rel=0`} 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
         ></iframe>
         {/* Overlay div to prevent interactions */}
         <div className="absolute top-0 left-0 w-full h-full"></div>
