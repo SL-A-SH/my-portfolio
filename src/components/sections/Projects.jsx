@@ -18,7 +18,6 @@ const ProjectMedia = ({ project }) => {
 
   if (media.type === 'youtube') {
     const videoId = getYouTubeId(media.src);
-    console.log(videoId);
     if (!videoId) return null;
 
     return (
@@ -27,7 +26,7 @@ const ProjectMedia = ({ project }) => {
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&mute=1&amp;controls=0&disablekb=1&showinfo=0&modestbranding=1&rel=0`} 
             title="YouTube video player" 
             frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allow="autoplay; encrypted-media; web-share" 
             referrerpolicy="strict-origin-when-cross-origin" 
         ></iframe>
         {/* Overlay div to prevent interactions */}
