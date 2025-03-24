@@ -28,7 +28,6 @@ const About = () => {
                   <ul className="text-gray-300 space-y-2">
                     <li>Git</li>
                     <li>AWS</li>
-                    <li>Heroku</li>
                   </ul>
                 </div>
                 <div>
