@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Mail, Github, Linkedin, MapPin, Clock } from 'lucide-react';
-import { FORM_CONFIG } from '../config/form';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
