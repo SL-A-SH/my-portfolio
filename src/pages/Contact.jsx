@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Mail, Github, Linkedin, MapPin, Clock } from 'lucide-react';
+import { FORM_CONFIG } from '../config/form';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -7,11 +8,34 @@ const Contact = () => {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -126,6 +150,20 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-8 rounded-xl border border-gray-700/50">
             <h2 className="text-2xl font-bold mb-6 text-white">Send a Message</h2>
+            
+            {/* Status Messages */}
+            {submitStatus === 'success' && (
+              <div className="mb-6 p-4 bg-green-600/20 border border-green-500/30 rounded-lg">
+                <p className="text-green-400 font-medium">Message sent successfully! I'll get back to you soon.</p>
+              </div>
+            )}
+            
+            {submitStatus === 'error' && (
+              <div className="mb-6 p-4 bg-red-600/20 border border-red-500/30 rounded-lg">
+                <p className="text-red-400 font-medium">Failed to send message. Please try again or email me directly.</p>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
@@ -140,6 +178,7 @@ const Contact = () => {
                   className="w-full px-4 py-3 bg-[#2a2f3b] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   placeholder="Your name"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -156,6 +195,7 @@ const Contact = () => {
                   className="w-full px-4 py-3 bg-[#2a2f3b] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   placeholder="your.email@example.com"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -172,14 +212,16 @@ const Contact = () => {
                   className="w-full px-4 py-3 bg-[#2a2f3b] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
                   placeholder="Tell me about your project or opportunity..."
                   required
+                  disabled={isSubmitting}
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-600 disabled:to-gray-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:scale-100 shadow-lg hover:shadow-blue-500/25 disabled:shadow-none"
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>

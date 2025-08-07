@@ -96,7 +96,7 @@ const About = () => {
                     <div className="flex items-center justify-between">
                       <span className="text-gray-300">Python</span>
                       <div className="w-24 bg-gray-700 rounded-full h-2">
-                        <div className="bg-green-500 h-2 rounded-full" style={{width: '50%'}}></div>
+                        <div className="bg-green-500 h-2 rounded-full" style={{width: '60%'}}></div>
                       </div>
                     </div>
                   </div>
@@ -107,6 +107,20 @@ const About = () => {
             <section>
               <h2 className="text-3xl font-bold mb-6 text-white">Work Experience</h2>
               <div className="space-y-6">
+                <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-6 rounded-xl border border-gray-700/50 hover:border-blue-500/30 transition-colors">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-xl font-semibold text-white">Part-Time Software Developer</h3>
+                    <span className="text-sm text-purple-400 bg-purple-600/20 px-3 py-1 rounded-full">Feb 2025 - May 2025</span>
+                  </div>
+                  <p className="text-gray-300 font-medium mb-2">NxVoy Trips - Part-time while studying</p>
+                  <p className="text-gray-400 text-sm mb-3">Full-stack development across multiple platforms</p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">React Native</span>
+                    <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">React</span>
+                    <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">Python</span>
+                  </div>
+                </div>
+
                 <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-6 rounded-xl border border-gray-700/50 hover:border-blue-500/30 transition-colors">
                   <div className="flex justify-between items-start mb-3">
                     <h3 className="text-xl font-semibold text-white">Software Developer</h3>
@@ -132,17 +146,17 @@ const About = () => {
                   <div className="flex flex-wrap gap-2">
                     <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">React</span>
                     <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">React Native</span>
+                    <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">NodeJS</span>
                     <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">WebRTC</span>
                     <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">Redis</span>
                     <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">AWS</span>
-                    <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">MongoDB</span>
                   </div>
                 </div>
 
                 <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-6 rounded-xl border border-gray-700/50 hover:border-blue-500/30 transition-colors">
                   <div className="flex justify-between items-start mb-3">
                     <h3 className="text-xl font-semibold text-white">Mobile App Developer</h3>
-                    <span className="text-sm text-purple-400 bg-purple-600/20 px-3 py-1 rounded-full">2021-2022</span>
+                    <span className="text-sm text-yellow-400 bg-yellow-600/20 px-3 py-1 rounded-full">2021-2022</span>
                   </div>
                   <p className="text-gray-300 font-medium mb-2">Star Projects - New Delhi, India</p>
                   <p className="text-gray-400 text-sm mb-3">Mobile test-taking platform development</p>
@@ -212,8 +226,7 @@ const About = () => {
                   <div className="flex flex-wrap gap-2">
                     <span className="bg-[#2a2f3b] text-gray-300 px-2 py-1 rounded text-xs border border-gray-600/50">Git</span>
                     <span className="bg-[#2a2f3b] text-gray-300 px-2 py-1 rounded text-xs border border-gray-600/50">AWS</span>
-                    <span className="bg-[#2a2f3b] text-gray-300 px-2 py-1 rounded text-xs border border-gray-600/50">Docker</span>
-                    <span className="bg-[#2a2f3b] text-gray-300 px-2 py-1 rounded text-xs border border-gray-600/50">VS Code</span>
+                    <span className="bg-[#2a2f3b] text-gray-300 px-2 py-1 rounded text-xs border border-gray-600/50">RenderDoc</span>
                   </div>
                 </div>
               </div>
