@@ -8,7 +8,7 @@ import Contact from './pages/Contact';
 const App = () => {
   return (
     <Router basename='/my-portfolio'>
-      <div className="w-full min-h-screen bg-[#1e2635]">
+      <div className="w-full min-h-screen bg-gradient-to-br from-[#0a0d14] via-[#1e2635] to-[#2a2f3b]">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
