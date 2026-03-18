@@ -16,6 +16,25 @@ const ProjectMedia = ({ project }) => {
     return <FeatureGrid type={project.mediaType} />;
   }
 
+  if (media.type === 'screenshots') {
+    const shots = project.screenshots?.slice(0, 3) || [media.src];
+    return (
+      <div className="relative w-full pt-[56.25%] bg-[#0a0d14] rounded-t-lg overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full flex gap-1 p-2">
+          {shots.map((src, i) => (
+            <div key={i} className="flex-1 rounded overflow-hidden">
+              <img
+                src={src}
+                alt={`${media.alt} ${i + 1}`}
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   if (media.type === 'youtube') {
     const videoId = getYouTubeId(media.src);
     if (!videoId) return null;
@@ -104,7 +123,7 @@ const Projects = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Featured Projects</h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            A showcase of my game development and software engineering work, demonstrating technical skills and creative problem-solving.
+            A showcase of my mobile development and software engineering work, from shipped apps on the Play Store and App Store to professional projects.
           </p>
         </div>
         
@@ -146,8 +165,36 @@ const Projects = () => {
               <div className="relative">
                 <ProjectMedia project={project} />
                 <div className="absolute top-4 right-4 space-y-2">
+                  {project.playStoreLink && (
+                    <a
+                      href={project.playStoreLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center bg-green-600/90 hover:bg-green-500 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105 shadow-lg"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      Play Store
+                    </a>
+                  )}
+                  {project.appStoreLink && (
+                    <a
+                      href={project.appStoreLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center bg-blue-600/90 hover:bg-blue-500 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105 shadow-lg"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      App Store
+                    </a>
+                  )}
                   {project.demoLink && (
-                    <a 
+                    <a
                       href={project.demoLink}
                       target="_blank"
                       rel="noopener noreferrer"

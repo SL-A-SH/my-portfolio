@@ -1,6 +1,101 @@
+import screenshot1 from '../assets/leaf-and-spine/screenshots/1.png';
+import screenshot2 from '../assets/leaf-and-spine/screenshots/2.png';
+import screenshot3 from '../assets/leaf-and-spine/screenshots/3.png';
+import screenshot4 from '../assets/leaf-and-spine/screenshots/4.png';
+import screenshot5 from '../assets/leaf-and-spine/screenshots/5.png';
+import screenshot6 from '../assets/leaf-and-spine/screenshots/6.png';
+import screenshot7 from '../assets/leaf-and-spine/screenshots/7.png';
+import screenshot8 from '../assets/leaf-and-spine/screenshots/8.png';
+import screenshot9 from '../assets/leaf-and-spine/screenshots/9.png';
+
 export const projects = [
   {
+    id: 'leaf-and-spine',
+    category: 'Mobile Apps',
+    title: 'Leaf & Spine',
+    description: 'A cross-platform PDF & EPUB reader with customizable 3D bookshelves, immersive reading environments, and ambient soundscapes. Live on Google Play and Apple App Store.',
+    longDescription: `Leaf & Spine is a production mobile application I designed and shipped independently from the ground up. The app transforms digital reading into a personalized sanctuary. Users can import PDFs and EPUBs, organize them on beautifully rendered 3D bookshelves, and create the perfect reading atmosphere with ambient sounds and immersive environments.
+                      The app features a dynamic in-app content store with unlockable UI assets including bookshelves, book covers, and animated ambient environments. All premium purchases are secured with server-side validation via Google Cloud Functions, and Firebase Anonymous Authentication ensures account-less usage while maintaining entitlements across devices.
+                      Designed with a privacy-first architecture as no personal data is collected, yet secure purchase entitlements are maintained.`,
+    media: {
+      type: 'screenshots',
+      src: screenshot1,
+      alt: 'Leaf & Spine — 3D bookshelf reading app'
+    },
+    screenshots: [screenshot1, screenshot2, screenshot3, screenshot4, screenshot5, screenshot6, screenshot7, screenshot8, screenshot9],
+    tags: ['React Native', 'Expo', 'Firebase', 'Google Cloud Functions', 'TypeScript', 'iOS', 'Android'],
+    playStoreLink: 'https://play.google.com/store/apps/details?id=com.experaforge.leafandspine&pcampaignid=web_share',
+    appStoreLink: 'https://apps.apple.com/in/app/leaf-spine/id6758519785',
+    timeline: 'Oct 2025 – Present',
+    role: 'Solo Developer',
+    features: [
+      'Cross-platform iOS & Android — deployed to Google Play and Apple App Store',
+      'Modular 3D bookshelf library with customizable designs and materials',
+      'Clean, distraction-free PDF and EPUB reader',
+      'Dynamic in-app content store with unlockable bookshelves, covers, and environments',
+      'Immersive ambient environments with soundscapes (rain, fireplace, cafe, beach)',
+      'Secure server-side in-app purchase validation via Google Cloud Functions',
+      'Firebase Anonymous Authentication for account-less usage',
+      'Persistent book spine and cover customization system',
+      'Privacy-first architecture — no personal data collected'
+    ],
+    responsibilities: [
+      'Architected and developed the full application using React Native and Expo, supporting both iOS and Android deployments',
+      'Designed a modular library system allowing users to import, organize, and read PDF and EPUB documents within customizable 3D bookshelf environments',
+      'Built a dynamic in-app content store delivering unlockable UI assets such as bookshelves, book covers, and animated ambient environments',
+      'Implemented secure server-side in-app purchase validation using Google Cloud Functions to verify store receipts and prevent fraudulent purchases',
+      'Integrated Firebase Anonymous Authentication to enable account-less usage while maintaining secure purchase entitlements across devices',
+      'Developed persistent user customization systems supporting dynamic book spine design, cover personalization, and bookshelf configuration',
+      'Optimized document rendering and navigation for smooth reading performance and responsive library browsing',
+      'Deployed and maintained the application on Google Play and Apple App Store'
+    ],
+    technicalDetails: `Built with React Native and Expo for cross-platform deployment. Firebase provides anonymous authentication and real-time entitlement sync. Google Cloud Functions handle server-side receipt validation for both Apple and Google in-app purchases, preventing fraudulent access to premium content. The 3D bookshelf UI is built with custom rendering logic for performant, animated shelf environments. Expo EAS manages build and submission pipelines for both stores.`,
+    challenges: [
+      'Implementing secure cross-platform in-app purchase validation without storing personal user data',
+      'Building performant 3D bookshelf rendering with smooth animations on both iOS and Android',
+      'Designing a scalable content store architecture that supports multiple asset types (shelves, covers, environments, sounds)',
+      'Managing anonymous user entitlements persistently across device reinstalls'
+    ]
+  },
+  {
     id: '1',
+    category: 'Game Development',
+    title: 'Graphics Engine',
+    description: 'A DirectX11-based rendering engine that utilizes compute shaders, demonstrating significant performance improvements when rendering thousands of objects',
+    longDescription: `Our system renders up to 5,000 spaceship models while providing real-time performance metrics and comprehensive benchmarking capabilities. 
+    Results show that GPU-driven rendering achieves substantial performance gains, particularly in scenarios with high object counts, validating the effectiveness of moving scene management computations to the GPU.`,
+    media: {
+      type: 'youtube',
+      src: 'https://youtu.be/BJ0ktjxmzzc',
+      thumbnail: '/api/placeholder/400/300'
+    },
+    tags: ['C++', 'DirectX11', 'HLSL', 'Qt'],
+    demoLink: 'https://youtu.be/BJ0ktjxmzzc',
+    codeLink: 'https://github.com/SL-A-SH/GraphicsEngine',
+    responsibilities: [
+      'Implemented DirectX11 rendering pipeline',
+      'Implemented a Compute Shader Pipeline',
+      'Created a robust benchmarking system capable of collecting detailed performance metrics including frame rates, draw calls, memory usage, and culling efficiency',
+      'Implemented a comprehensive performance monitoring interface that provides real-time visibility intorendering pipeline performance',
+      'Conducted a systematic performance comparison between CPU-driven and GPU-driven rendering approaches across varying object counts and scene complexities'
+    ],
+    features: [
+      'Rendering Engine Core',
+      'Performance Profiling System',
+      'Compute Shader Pipeline',
+      'User Interface Layer'
+    ],
+    timeline: 'May 2025 - July 2025',
+    role: 'Rendering Engineer',
+    challenges: [
+      'GPU-CPU Synchronization',
+      'Memory Management',
+      'Rendering Pipeline Integration',
+      'Debugging and Validation'
+    ]
+  },
+  {
+    id: '2',
     category: 'Game Development',
     title: '3D Hack & Slash Adventure',
     description: 'An immersive 3D hack & slash game featuring a beautiful open world environment with diverse enemy types and interactive item collection system.',
@@ -34,7 +129,7 @@ export const projects = [
     ]
   },
   {
-    id: '2',
+    id: '3',
     category: 'Game Development',
     title: 'Third-Person Shooter',
     description: 'An open-world third-person shooter featuring multiple enemy types, comprehensive inventory system, and diverse weapon mechanics.',
@@ -69,10 +164,10 @@ export const projects = [
     ]
   },
   {
-    id: '3',
+    id: '4',
     category: 'Game Development',
     title: 'Rogue-like Top-down Shooter',
-    description: 'A dark-themed top-down rogue-like shooter developed during a gam jam featuring procedurally generated levels and dynamic room layouts.',
+    description: 'A dark-themed top-down rogue-like shooter developed during a game jam featuring procedurally generated levels and dynamic room layouts.',
     longDescription: `Developed during a game jam, this rogue-like shooter combines procedural 
     generation with intense top-down combat. Features a dark atmosphere and randomly generated 
     levels for high replayability.`,
@@ -104,7 +199,7 @@ export const projects = [
     ]
   },
   {
-    id: '4',
+    id: '5',
     category: 'Game Development',
     title: 'Multiplayer Cat Maze Adventure - Advanced Game Technologies',
     description: 'A puzzle maze game where players control a cat searching for its kittens while solving puzzles and competing for high scores in multiplayer mode.',
@@ -142,7 +237,7 @@ export const projects = [
     ]
   },
   {
-    id: '5',
+    id: '6',
     category: 'Game Development',
     title: 'Mars Evolution Simulation - Advanced Graphics for Games',
     description: 'An interactive Mars environment simulation showcasing the planets evolution with dynamic weather, lighting effects, and atmospheric transitions.',

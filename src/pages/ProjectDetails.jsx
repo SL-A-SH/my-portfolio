@@ -57,7 +57,7 @@ const ProjectDetails = () => {
         
         {/* Media Section */}
         <div className="mb-16">
-          {project.media?.type === 'youtube' ? 
+          {project.media?.type === 'youtube' ?
           (
             <div className="relative pt-[56.25%] rounded-xl overflow-hidden bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] border border-gray-700/50">
               <iframe
@@ -68,18 +68,34 @@ const ProjectDetails = () => {
                 allowFullScreen
               />
             </div>
-          ) 
-          : project.category === 'Professional Work' ? 
+          )
+          : project.media?.type === 'screenshots' ?
+          (
+            <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] rounded-xl border border-gray-700/50 p-6">
+              <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent">
+                {project.screenshots?.map((src, index) => (
+                  <div key={index} className="flex-shrink-0 rounded-lg overflow-hidden border border-gray-700/50" style={{height: '480px'}}>
+                    <img
+                      src={src}
+                      alt={`${project.title} screenshot ${index + 1}`}
+                      className="h-full w-auto object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+          : project.category === 'Professional Work' ?
           (
             <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] rounded-xl border border-gray-700/50 p-6">
               <FeatureGrid type={project.mediaType} />
             </div>
-          ) 
-          : 
+          )
+          :
           (
             <div className="relative aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] border border-gray-700/50">
-              <img 
-                src={project.media.src} 
+              <img
+                src={project.media.src}
                 alt={project.media.alt || project.title}
                 className="w-full h-full object-cover"
               />
@@ -216,10 +232,32 @@ const ProjectDetails = () => {
               )}
 
               {/* Links */}
-              {(project.demoLink || project.codeLink) && (
+              {(project.demoLink || project.codeLink || project.playStoreLink || project.appStoreLink) && (
                 <div className="flex flex-col gap-3 mt-8">
+                  {project.playStoreLink && (
+                    <a
+                      href={project.playStoreLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-green-500/25 flex items-center justify-center gap-2 font-medium"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Google Play
+                    </a>
+                  )}
+                  {project.appStoreLink && (
+                    <a
+                      href={project.appStoreLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 flex items-center justify-center gap-2 font-medium"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      App Store
+                    </a>
+                  )}
                   {project.demoLink && (
-                    <a 
+                    <a
                       href={project.demoLink}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -230,7 +268,7 @@ const ProjectDetails = () => {
                     </a>
                   )}
                   {project.codeLink && (
-                    <a 
+                    <a
                       href={project.codeLink}
                       target="_blank"
                       rel="noopener noreferrer"

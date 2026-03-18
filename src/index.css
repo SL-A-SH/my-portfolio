@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  background-color: #0a0d14;
+}
+
 /* Custom floating animations */
 @keyframes float-1 {
   0%, 100% { transform: translateY(0px) translateX(0px); }

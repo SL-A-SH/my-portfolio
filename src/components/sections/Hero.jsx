@@ -29,12 +29,12 @@ const Hero = () => {
           </h1>
           
           <p className="text-2xl sm:text-3xl md:text-4xl text-gray-300 mb-8 font-light">
-            Game Developer & Engineer
+            Mobile Software Engineer
           </p>
-          
+
           <p className="text-lg sm:text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Crafting immersive gaming experiences with expertise in Unreal Engine, C++, and full-stack development. 
-            Passionate about creating engaging gameplay mechanics and pushing technical boundaries.
+            Building cross-platform mobile apps with React Native, Expo, and cloud-backed architectures.
+            Passionate about crafting productive and creative experiences that ship to the App Store and Google Play.
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
@@ -61,15 +61,15 @@ const Hero = () => {
           {/* Quick stats */}
           <div className="flex justify-center items-center gap-8 mt-16 pt-8 border-t border-gray-700/50">
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-400">5+</div>
-              <div className="text-sm text-gray-400">Game Projects</div>
+              <div className="text-2xl font-bold text-blue-400">2</div>
+              <div className="text-sm text-gray-400">Apps on Store</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-green-400">5+</div>
               <div className="text-sm text-gray-400">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-400">12+</div>
+              <div className="text-2xl font-bold text-purple-400">10+</div>
               <div className="text-sm text-gray-400">Technologies</div>
             </div>
           </div>

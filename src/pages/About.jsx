@@ -6,8 +6,11 @@ const About = () => {
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             About Me
           </h1>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Game Developer and Computer Games Engineering student passionate about creating immersive gaming experiences.
+          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+            Mobile Software Engineer specialising in React Native
+          </p>
+          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+            Building productive and creative apps that ship to both the App Store and Google Play.
           </p>
         </div>
         
@@ -17,14 +20,14 @@ const About = () => {
               <h2 className="text-3xl font-bold mb-6 text-white">Background</h2>
               <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-8 rounded-xl border border-gray-700/50">
                 <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                  I'm a Game Developer and Computer Games Engineering student passionate about creating
-                  immersive gaming experiences. With a background in full-stack and mobile development,
-                  I bring a comprehensive understanding of software development to game creation.
+                  I'm a Mobile Software Engineer with 5+ years of experience building cross-platform apps with React Native.
+                  I recently shipped Leaf & Spine — an independent reading app with 3D bookshelves and immersive environments
+                  to both Google Play and the Apple App Store.
                 </p>
                 <p className="text-gray-300 text-lg leading-relaxed">
-                  My journey in technology started with web and mobile development, which has given me a strong foundation 
-                  in software engineering principles. Now, I'm focused on game development, combining my technical skills 
-                  with creative problem-solving to build engaging interactive experiences.
+                  I'm drawn to apps that are productive or creative: tools that help people read, learn, focus, or make things.
+                  My background spans mobile, backend, and cloud infrastructure, so I'm comfortable taking a feature from
+                  design all the way through to store deployment.
                 </p>
               </div>
             </section>
@@ -35,33 +38,33 @@ const About = () => {
                 <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-6 rounded-xl border border-gray-700/50">
                   <h3 className="text-xl font-semibold mb-4 text-blue-400 flex items-center">
                     <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                     </svg>
-                    Game Development
+                    Mobile Development
                   </h3>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-300">Unreal Engine</span>
+                      <span className="text-gray-300">React Native</span>
+                      <div className="w-24 bg-gray-700 rounded-full h-2">
+                        <div className="bg-blue-500 h-2 rounded-full" style={{width: '95%'}}></div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-300">Expo & EAS</span>
                       <div className="w-24 bg-gray-700 rounded-full h-2">
                         <div className="bg-blue-500 h-2 rounded-full" style={{width: '90%'}}></div>
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-300">C++</span>
+                      <span className="text-gray-300">TypeScript</span>
                       <div className="w-24 bg-gray-700 rounded-full h-2">
                         <div className="bg-blue-500 h-2 rounded-full" style={{width: '85%'}}></div>
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-300">Blueprints</span>
+                      <span className="text-gray-300">iOS & Android</span>
                       <div className="w-24 bg-gray-700 rounded-full h-2">
-                        <div className="bg-blue-500 h-2 rounded-full" style={{width: '80%'}}></div>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-gray-300">Game AI</span>
-                      <div className="w-24 bg-gray-700 rounded-full h-2">
-                        <div className="bg-blue-500 h-2 rounded-full" style={{width: '75%'}}></div>
+                        <div className="bg-blue-500 h-2 rounded-full" style={{width: '85%'}}></div>
                       </div>
                     </div>
                   </div>
@@ -70,33 +73,33 @@ const About = () => {
                 <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-6 rounded-xl border border-gray-700/50">
                   <h3 className="text-xl font-semibold mb-4 text-green-400 flex items-center">
                     <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                     </svg>
-                    Web & Mobile
+                    Backend & Cloud
                   </h3>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-300">React</span>
+                      <span className="text-gray-300">Firebase</span>
                       <div className="w-24 bg-gray-700 rounded-full h-2">
                         <div className="bg-green-500 h-2 rounded-full" style={{width: '90%'}}></div>
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-300">React Native</span>
+                      <span className="text-gray-300">Node.js</span>
                       <div className="w-24 bg-gray-700 rounded-full h-2">
                         <div className="bg-green-500 h-2 rounded-full" style={{width: '85%'}}></div>
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-300">Node.js</span>
+                      <span className="text-gray-300">Google Cloud</span>
                       <div className="w-24 bg-gray-700 rounded-full h-2">
                         <div className="bg-green-500 h-2 rounded-full" style={{width: '80%'}}></div>
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-300">Python</span>
+                      <span className="text-gray-300">REST & WebSockets</span>
                       <div className="w-24 bg-gray-700 rounded-full h-2">
-                        <div className="bg-green-500 h-2 rounded-full" style={{width: '60%'}}></div>
+                        <div className="bg-green-500 h-2 rounded-full" style={{width: '80%'}}></div>
                       </div>
                     </div>
                   </div>
@@ -109,15 +112,15 @@ const About = () => {
               <div className="space-y-6">
                 <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-6 rounded-xl border border-gray-700/50 hover:border-blue-500/30 transition-colors">
                   <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-xl font-semibold text-white">Part-Time Software Developer</h3>
-                    <span className="text-sm text-purple-400 bg-purple-600/20 px-3 py-1 rounded-full">Feb 2025 - May 2025</span>
+                    <h3 className="text-xl font-semibold text-white">Software Developer (Remote)</h3>
+                    <span className="text-sm text-purple-400 bg-purple-600/20 px-3 py-1 rounded-full">Feb 2025 – May 2025</span>
                   </div>
-                  <p className="text-gray-300 font-medium mb-2">NxVoy Trips - Part-time while studying</p>
-                  <p className="text-gray-400 text-sm mb-3">Full-stack development across multiple platforms</p>
+                  <p className="text-gray-300 font-medium mb-2">NxVoy Trips – London, UK</p>
+                  <p className="text-gray-400 text-sm mb-3">Built mobile features and backend APIs for a travel app, implementing real-time WebSocket communication and cross-platform authentication with Apple and Google sign-in.</p>
                   <div className="flex flex-wrap gap-2">
                     <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">React Native</span>
-                    <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">React</span>
-                    <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">Python</span>
+                    <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">FastAPI</span>
+                    <span className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50">WebSockets</span>
                   </div>
                 </div>
 
@@ -178,7 +181,7 @@ const About = () => {
                     <span className="text-sm text-blue-400 bg-blue-600/20 px-3 py-1 rounded-full">2024-2025</span>
                   </div>
                   <p className="text-gray-300 font-medium">Newcastle University</p>
-                  <p className="text-gray-400 text-sm">Expected Graduation: 2025</p>
+                  <p className="text-gray-400 text-sm">Graduated: 2025</p>
                 </div>
 
                 <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-6 rounded-xl border border-gray-700/50">
@@ -200,7 +203,7 @@ const About = () => {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-sm text-gray-400 mb-2 font-medium">📍 Location</h3>
-                  <p className="text-gray-300">Newcastle Upon Tyne, UK</p>
+                  <p className="text-gray-300">Bhubaneswar, India</p>
                 </div>
 
                 <div>
@@ -212,12 +215,12 @@ const About = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-sm text-gray-400 mb-2 font-medium">🎮 Interests</h3>
+                  <h3 className="text-sm text-gray-400 mb-2 font-medium">📱 Interests</h3>
                   <ul className="text-gray-300 space-y-1">
-                    <li>• Game Development</li>
-                    <li>• Game Engine Development</li>
-                    <li>• AI in Games</li>
-                    <li>• Graphics Programming</li>
+                    <li>• Productive & Creative Apps</li>
+                    <li>• Mobile UX & Performance</li>
+                    <li>• Cloud Architecture</li>
+                    <li>• In-App Monetisation</li>
                   </ul>
                 </div>
 
@@ -225,8 +228,10 @@ const About = () => {
                   <h3 className="text-sm text-gray-400 mb-2 font-medium">🛠️ Tools</h3>
                   <div className="flex flex-wrap gap-2">
                     <span className="bg-[#2a2f3b] text-gray-300 px-2 py-1 rounded text-xs border border-gray-600/50">Git</span>
-                    <span className="bg-[#2a2f3b] text-gray-300 px-2 py-1 rounded text-xs border border-gray-600/50">AWS</span>
-                    <span className="bg-[#2a2f3b] text-gray-300 px-2 py-1 rounded text-xs border border-gray-600/50">RenderDoc</span>
+                    <span className="bg-[#2a2f3b] text-gray-300 px-2 py-1 rounded text-xs border border-gray-600/50">Expo EAS</span>
+                    <span className="bg-[#2a2f3b] text-gray-300 px-2 py-1 rounded text-xs border border-gray-600/50">GitHub Actions</span>
+                    <span className="bg-[#2a2f3b] text-gray-300 px-2 py-1 rounded text-xs border border-gray-600/50">Cursor</span>
+                    <span className="bg-[#2a2f3b] text-gray-300 px-2 py-1 rounded text-xs border border-gray-600/50">Claude Code</span>
                   </div>
                 </div>
               </div>
