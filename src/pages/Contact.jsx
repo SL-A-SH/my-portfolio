@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Mail, Github, Linkedin, MapPin, Clock } from 'lucide-react';
 
 const Contact = () => {
@@ -45,118 +45,97 @@ const Contact = () => {
     }));
   };
 
+  useEffect(() => {
+    document.title = 'Contact — Aqeeb Rizwan';
+  }, []);
+
   return (
-    <main className="pt-20 px-4 sm:px-6 lg:px-8 min-h-screen text-white bg-gradient-to-b from-[#1e2635] to-[#0f1419]">
+    <main id="main-content" className="pt-20 px-4 sm:px-6 lg:px-8 min-h-screen text-white bg-gradient-to-b from-brand-mid to-brand-deep">
       <div className="max-w-6xl mx-auto py-12">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+        <div className="mb-14">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-3 text-white">
             Get In Touch
           </h1>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities, interesting projects, or just having a chat about game development.
+          <div className="w-10 h-0.5 bg-blue-500 mb-5"></div>
+          <p className="text-lg text-gray-400 max-w-xl">
+            Open to new roles, interesting projects, or just a conversation about mobile development.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-8 rounded-xl border border-gray-700/50">
-              <h2 className="text-2xl font-bold mb-6 text-white">Contact Information</h2>
-              
-              <div className="space-y-6">
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center group-hover:bg-blue-600/30 transition-colors">
-                    <Mail className="w-6 h-6 text-blue-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm text-gray-400 font-medium">Email</h3>
-                    <a href="mailto:aqeeb.riz@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
-                      aqeeb.riz@gmail.com
-                    </a>
-                  </div>
-                </div>
+          <div className="bg-gradient-to-br from-brand-card to-brand-surface p-8 rounded-xl border border-gray-700/50">
+            <h2 className="text-2xl font-bold mb-6 text-white">Contact Information</h2>
 
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 bg-gray-600/20 rounded-lg flex items-center justify-center group-hover:bg-gray-600/30 transition-colors">
-                    <Github className="w-6 h-6 text-gray-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm text-gray-400 font-medium">GitHub</h3>
-                    <a href="https://github.com/SL-A-SH" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gray-400 transition-colors font-medium">
-                      github.com/SL-A-SH
-                    </a>
-                  </div>
+            <div className="space-y-6">
+              <div className="flex items-center gap-4 group">
+                <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center group-hover:bg-blue-600/30 transition-colors">
+                  <Mail className="w-6 h-6 text-blue-400" />
                 </div>
-
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center group-hover:bg-blue-600/30 transition-colors">
-                    <Linkedin className="w-6 h-6 text-blue-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm text-gray-400 font-medium">LinkedIn</h3>
-                    <a href="https://linkedin.com/in/aqeeb-rizwan/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
-                      linkedin.com/in/aqeeb-rizwan
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 bg-green-600/20 rounded-lg flex items-center justify-center group-hover:bg-green-600/30 transition-colors">
-                    <MapPin className="w-6 h-6 text-green-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm text-gray-400 font-medium">Location</h3>
-                    <p className="text-gray-300 font-medium">Bhubaneswar, India</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 bg-purple-600/20 rounded-lg flex items-center justify-center group-hover:bg-purple-600/30 transition-colors">
-                    <Clock className="w-6 h-6 text-purple-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm text-gray-400 font-medium">Availability</h3>
-                    <p className="text-gray-300 font-medium">Open to opportunities</p>
-                  </div>
+                <div>
+                  <h3 className="text-sm text-gray-400 font-medium">Email</h3>
+                  <a href="mailto:aqeeb.riz@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
+                    aqeeb.riz@gmail.com
+                  </a>
                 </div>
               </div>
-            </div>
 
-            {/* Quick Stats */}
-            <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-8 rounded-xl border border-gray-700/50">
-              <h3 className="text-xl font-bold mb-6 text-white">Quick Facts</h3>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">5+</div>
-                  <div className="text-sm text-gray-400">Years Experience</div>
+              <div className="flex items-center gap-4 group">
+                <div className="w-12 h-12 bg-brand-hover rounded-lg flex items-center justify-center group-hover:bg-brand-hover/80 transition-colors">
+                  <Github className="w-6 h-6 text-gray-300" />
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-green-400 mb-2">10+</div>
-                  <div className="text-sm text-gray-400">Projects Completed</div>
+                <div>
+                  <h3 className="text-sm text-gray-400 font-medium">GitHub</h3>
+                  <a href="https://github.com/SL-A-SH" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors font-medium">
+                    github.com/SL-A-SH
+                  </a>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-purple-400 mb-2">5+</div>
-                  <div className="text-sm text-gray-400">Game Projects</div>
+              </div>
+
+              <div className="flex items-center gap-4 group">
+                <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center group-hover:bg-blue-600/30 transition-colors">
+                  <Linkedin className="w-6 h-6 text-blue-400" />
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-yellow-400 mb-2">2</div>
-                  <div className="text-sm text-gray-400">Languages</div>
+                <div>
+                  <h3 className="text-sm text-gray-400 font-medium">LinkedIn</h3>
+                  <a href="https://linkedin.com/in/aqeeb-rizwan/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
+                    linkedin.com/in/aqeeb-rizwan
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 group">
+                <div className="w-12 h-12 bg-brand-hover rounded-lg flex items-center justify-center group-hover:bg-brand-hover/80 transition-colors">
+                  <MapPin className="w-6 h-6 text-gray-300" />
+                </div>
+                <div>
+                  <h3 className="text-sm text-gray-400 font-medium">Location</h3>
+                  <p className="text-gray-300 font-medium">Bhubaneswar, India</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 group">
+                <div className="w-12 h-12 bg-emerald-600/20 rounded-lg flex items-center justify-center group-hover:bg-emerald-600/30 transition-colors">
+                  <Clock className="w-6 h-6 text-emerald-400" />
+                </div>
+                <div>
+                  <h3 className="text-sm text-gray-400 font-medium">Availability</h3>
+                  <p className="text-emerald-400 font-medium">Open to opportunities</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-8 rounded-xl border border-gray-700/50">
+          <div className="bg-gradient-to-br from-brand-card to-brand-surface p-8 rounded-xl border border-gray-700/50">
             <h2 className="text-2xl font-bold mb-6 text-white">Send a Message</h2>
-            
-            {/* Status Messages */}
+
             {submitStatus === 'success' && (
               <div className="mb-6 p-4 bg-green-600/20 border border-green-500/30 rounded-lg">
                 <p className="text-green-400 font-medium">Message sent successfully! I'll get back to you soon.</p>
               </div>
             )}
-            
+
             {submitStatus === 'error' && (
               <div className="mb-6 p-4 bg-red-600/20 border border-red-500/30 rounded-lg">
                 <p className="text-red-400 font-medium">Failed to send message. Please try again or email me directly.</p>
@@ -174,8 +153,8 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[#2a2f3b] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="Your name"
+                  className="w-full px-4 py-3 bg-brand-surface border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  placeholder="e.g. Jane Smith"
                   required
                   disabled={isSubmitting}
                 />
@@ -191,7 +170,7 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[#2a2f3b] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-brand-surface border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   placeholder="your.email@example.com"
                   required
                   disabled={isSubmitting}
@@ -208,7 +187,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={6}
-                  className="w-full px-4 py-3 bg-[#2a2f3b] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+                  className="w-full px-4 py-3 bg-brand-surface border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
                   placeholder="Tell me about your project or opportunity..."
                   required
                   disabled={isSubmitting}
@@ -218,7 +197,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-600 disabled:to-gray-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:scale-100 shadow-lg hover:shadow-blue-500/25 disabled:shadow-none"
+                className="w-full bg-blue-600 hover:bg-blue-500 disabled:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition-colors"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>

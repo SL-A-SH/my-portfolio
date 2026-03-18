@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
 import Hero from '../components/sections/Hero';
 import Projects from '../components/sections/Projects';
 
 const Home = () => {
+  useEffect(() => {
+    document.title = 'Aqeeb Rizwan — Mobile Software Engineer';
+  }, []);
+
   return (
-    <main className="w-full">
+    <main id="main-content" className="w-full">
       <Hero />
       <Projects />
     </main>

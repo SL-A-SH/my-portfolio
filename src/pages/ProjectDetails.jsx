@@ -1,7 +1,14 @@
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+const CATEGORY_COLORS = {
+  'Mobile Apps':       { label: 'text-blue-400',    badge: 'bg-blue-600/20 text-blue-400 border-blue-500/30' },
+  'Game Development':  { label: 'text-sky-400',     badge: 'bg-sky-600/20 text-sky-400 border-sky-500/30'   },
+  'Professional Work': { label: 'text-emerald-400', badge: 'bg-emerald-600/20 text-emerald-400 border-emerald-500/30' },
+};
+const getCategoryColors = (cat) => CATEGORY_COLORS[cat] ?? { label: 'text-blue-400', badge: 'bg-blue-600/20 text-blue-400 border-blue-500/30' };
 import { projects } from '../constants/projects';
-import { ExternalLink, Calendar, User, Flag, AlertTriangle, ArrowLeft } from 'lucide-react';
+import { ExternalLink, AlertTriangle, ArrowLeft } from 'lucide-react';
 import FeatureGrid from '../components/FeatureGrid';
 import { Link } from 'react-router-dom';
 
@@ -54,13 +61,20 @@ const ProjectDetails = () => {
   const { id } = useParams();
   const project = projects.find(p => p.id === id);
 
+  useEffect(() => {
+    document.title = project
+      ? `${project.title} — Aqeeb Rizwan`
+      : 'Project Not Found — Aqeeb Rizwan';
+  }, [project]);
+
   if (!project) {
     return (
-      <div className="pt-20 min-h-screen flex items-center justify-center text-white bg-gradient-to-b from-[#1e2635] to-[#0f1419]">
+      <div className="pt-20 min-h-screen flex items-center justify-center text-white bg-gradient-to-b from-brand-mid to-brand-deep">
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-4">Project not found</h2>
-          <Link to="/" className="text-blue-400 hover:text-blue-300 transition-colors">
-            ← Back to Projects
+          <Link to="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors group">
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            Back to Projects
           </Link>
         </div>
       </div>
@@ -68,7 +82,7 @@ const ProjectDetails = () => {
   }
 
   return (
-    <main className="pt-20 px-4 sm:px-6 lg:px-8 min-h-screen text-white bg-gradient-to-b from-[#1e2635] to-[#0f1419]">
+    <main id="main-content" className="pt-20 px-4 sm:px-6 lg:px-8 min-h-screen text-white bg-gradient-to-b from-brand-mid to-brand-deep">
       <div className="max-w-6xl mx-auto py-12">
         {/* Back Button */}
         <div className="mb-8">
@@ -83,20 +97,23 @@ const ProjectDetails = () => {
 
         {/* Header */}
         <div className="mb-12">
-          <div className="flex items-center gap-3 text-gray-400 mb-4">
-            <span className="px-4 py-2 bg-blue-600/20 border border-blue-500/30 rounded-full text-sm font-medium">
-              {project.category}
-            </span>
-            {project.role && (
-              <span className="px-4 py-2 bg-green-600/20 border border-green-500/30 rounded-full text-sm font-medium">
-                {project.role}
+          {(() => { const colors = getCategoryColors(project.category); return (
+            <div className="flex items-center gap-2.5 mb-4">
+              <span className={`text-xs font-semibold tracking-widest uppercase ${colors.label}`}>
+                {project.category}
               </span>
-            )}
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              {project.role && (
+                <span className={`px-2.5 py-0.5 rounded-full border text-xs font-medium ${colors.badge}`}>
+                  {project.role}
+                </span>
+              )}
+            </div>
+          ); })()}
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
             {project.title}
           </h1>
-          <p className="text-xl text-gray-400 max-w-3xl">
+          <div className="w-10 h-0.5 bg-blue-500 mb-5"></div>
+          <p className="text-lg text-gray-400 max-w-3xl">
             {project.description}
           </p>
         </div>
@@ -105,13 +122,13 @@ const ProjectDetails = () => {
         <div className="mb-16">
           {project.media?.type === 'youtube' ?
           (
-            <div className="relative pt-[56.25%] rounded-xl overflow-hidden bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] border border-gray-700/50">
+            <div className="relative pt-[56.25%] rounded-xl overflow-hidden bg-gradient-to-br from-brand-card to-brand-surface border border-gray-700/50">
               <YouTubeFacade src={project.media.src} title={project.title} />
             </div>
           )
           : project.media?.type === 'screenshots' ?
           (
-            <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] rounded-xl border border-gray-700/50 p-6">
+            <div className="bg-gradient-to-br from-brand-card to-brand-surface rounded-xl border border-gray-700/50 p-6">
               <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent">
                 {project.screenshots?.map((src, index) => (
                   <div key={index} className="flex-shrink-0 rounded-lg overflow-hidden border border-gray-700/50" style={{height: '480px'}}>
@@ -128,13 +145,13 @@ const ProjectDetails = () => {
           )
           : project.category === 'Professional Work' ?
           (
-            <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] rounded-xl border border-gray-700/50 p-6">
+            <div className="bg-gradient-to-br from-brand-card to-brand-surface rounded-xl border border-gray-700/50 p-6">
               <FeatureGrid type={project.mediaType} />
             </div>
           )
           :
           (
-            <div className="relative aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] border border-gray-700/50">
+            <div className="relative aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-brand-card to-brand-surface border border-gray-700/50">
               <img
                 src={project.media.src}
                 alt={project.media.alt || project.title}
@@ -147,29 +164,25 @@ const ProjectDetails = () => {
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
           {/* Main Content */}
-          <div className="lg:col-span-3 space-y-12">
+          <div className="lg:col-span-3 space-y-12 order-2 lg:order-1">
             {/* Description */}
             <section>
               <h2 className="text-3xl font-bold mb-6 text-white">About this project</h2>
-              <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-8 rounded-xl border border-gray-700/50">
-                <p className="text-gray-300 text-lg leading-relaxed">{project.longDescription}</p>
-              </div>
+              <p className="text-gray-300 text-lg leading-relaxed">{project.longDescription}</p>
             </section>
 
             {/* Features */}
             {project.features && (
               <section>
                 <h2 className="text-3xl font-bold mb-6 text-white">Key Features</h2>
-                <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-8 rounded-xl border border-gray-700/50">
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {project.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-300">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {project.features.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="text-gray-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </section>
             )}
 
@@ -177,26 +190,22 @@ const ProjectDetails = () => {
             {project.technicalDetails && (
               <section>
                 <h2 className="text-3xl font-bold mb-6 text-white">Technical Details</h2>
-                <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-8 rounded-xl border border-gray-700/50">
-                  <p className="text-gray-300 text-lg leading-relaxed">{project.technicalDetails}</p>
-                </div>
+                <p className="text-gray-300 text-lg leading-relaxed">{project.technicalDetails}</p>
               </section>
             )}
 
-             {/* Responsibilities */}
-             {project.responsibilities && (
+            {/* Responsibilities */}
+            {project.responsibilities && (
               <section>
                 <h2 className="text-3xl font-bold mb-6 text-white">My Responsibilities</h2>
-                <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-8 rounded-xl border border-gray-700/50">
-                  <ul className="space-y-4">
-                    {project.responsibilities.map((responsibility, index) => (
-                      <li key={index} className="flex items-start gap-4">
-                        <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-300 leading-relaxed">{responsibility}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className="space-y-4">
+                  {project.responsibilities.map((responsibility, index) => (
+                    <li key={index} className="flex items-start gap-4">
+                      <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="text-gray-300 leading-relaxed">{responsibility}</span>
+                    </li>
+                  ))}
+                </ul>
               </section>
             )}
 
@@ -204,24 +213,22 @@ const ProjectDetails = () => {
             {project.challenges && (
               <section>
                 <h2 className="text-3xl font-bold mb-6 text-white">Challenges Overcome</h2>
-                <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-8 rounded-xl border border-gray-700/50">
-                  <ul className="space-y-4">
-                    {project.challenges.map((challenge, index) => (
-                      <li key={index} className="flex items-start gap-4">
-                        <AlertTriangle className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-1" />
-                        <span className="text-gray-300 leading-relaxed">{challenge}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className="space-y-4">
+                  {project.challenges.map((challenge, index) => (
+                    <li key={index} className="flex items-start gap-4">
+                      <AlertTriangle className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-1" />
+                      <span className="text-gray-300 leading-relaxed">{challenge}</span>
+                    </li>
+                  ))}
+                </ul>
               </section>
             )}
           </div>
 
           {/* Sidebar */}
-          <div className="lg:col-span-1 space-y-6">
+          <div className="lg:col-span-1 space-y-6 order-1 lg:order-2">
             {/* Project Info Card */}
-            <div className="bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] p-6 rounded-xl border border-gray-700/50 sticky top-24">
+            <div className="bg-gradient-to-br from-brand-card to-brand-surface p-6 rounded-xl border border-gray-700/50 sticky top-24">
               <h2 className="text-xl font-bold mb-6 text-white">Project Info</h2>
               
               {/* Technologies */}
@@ -231,7 +238,7 @@ const ProjectDetails = () => {
                   {project.tags?.map((tag, index) => (
                     <span 
                       key={index}
-                      className="bg-[#2a2f3b] text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50"
+                      className="bg-brand-surface text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600/50"
                     >
                       {tag}
                     </span>
@@ -242,10 +249,7 @@ const ProjectDetails = () => {
               {/* Timeline */}
               {project.timeline && (
                 <div className="mb-6">
-                  <h3 className="text-sm text-gray-400 mb-2 flex items-center gap-2 font-medium">
-                    <Calendar className="w-4 h-4" />
-                    Timeline
-                  </h3>
+                  <h3 className="text-sm text-gray-400 mb-2 font-medium">Timeline</h3>
                   <p className="text-gray-300">{project.timeline}</p>
                 </div>
               )}
@@ -253,10 +257,7 @@ const ProjectDetails = () => {
               {/* Role */}
               {project.role && (
                 <div className="mb-6">
-                  <h3 className="text-sm text-gray-400 mb-2 flex items-center gap-2 font-medium">
-                    <User className="w-4 h-4" />
-                    Role
-                  </h3>
+                  <h3 className="text-sm text-gray-400 mb-2 font-medium">Role</h3>
                   <p className="text-gray-300">{project.role}</p>
                 </div>
               )}
@@ -264,10 +265,7 @@ const ProjectDetails = () => {
               {/* Team */}
               {project.team && (
                 <div className="mb-6">
-                  <h3 className="text-sm text-gray-400 mb-2 flex items-center gap-2 font-medium">
-                    <Flag className="w-4 h-4" />
-                    Team
-                  </h3>
+                  <h3 className="text-sm text-gray-400 mb-2 font-medium">Team</h3>
                   <p className="text-gray-300">{project.team}</p>
                 </div>
               )}
@@ -280,7 +278,7 @@ const ProjectDetails = () => {
                       href={project.playStoreLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-green-500/25 flex items-center justify-center gap-2 font-medium"
+                      className="bg-green-600 hover:bg-green-500 text-white px-4 py-3 rounded-lg text-center transition-colors flex items-center justify-center gap-2 font-medium"
                     >
                       <ExternalLink className="w-4 h-4" />
                       Google Play
@@ -291,7 +289,7 @@ const ProjectDetails = () => {
                       href={project.appStoreLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 flex items-center justify-center gap-2 font-medium"
+                      className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-3 rounded-lg text-center transition-colors flex items-center justify-center gap-2 font-medium"
                     >
                       <ExternalLink className="w-4 h-4" />
                       App Store
@@ -302,7 +300,7 @@ const ProjectDetails = () => {
                       href={project.demoLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 flex items-center justify-center gap-2 font-medium"
+                      className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-3 rounded-lg text-center transition-colors flex items-center justify-center gap-2 font-medium"
                     >
                       <ExternalLink className="w-4 h-4" />
                       View Demo
@@ -313,7 +311,7 @@ const ProjectDetails = () => {
                       href={project.codeLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-[#2a2f3b] hover:bg-[#3a3f4b] text-white px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 border border-gray-600 hover:border-gray-500 flex items-center justify-center gap-2 font-medium"
+                      className="bg-brand-surface hover:bg-brand-hover text-white px-4 py-3 rounded-lg text-center transition-colors border border-gray-600 hover:border-gray-500 flex items-center justify-center gap-2 font-medium"
                     >
                       <ExternalLink className="w-4 h-4" />
                       View Code
