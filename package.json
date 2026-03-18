@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist --repo https://github.com/SL-A-SH/my-portfolio.git"
   },
   "dependencies": {
     "lucide-react": "^0.471.2",
@@ -32,6 +32,7 @@
     "globals": "^15.15.0",
     "postcss": "^8.5.8",
     "tailwindcss": "^3.4.19",
-    "vite": "^6.4.1"
+    "vite": "^6.4.1",
+    "vite-imagetools": "^6.2.9"
   }
 }

@@ -27,6 +27,7 @@ const ProjectMedia = ({ project }) => {
                 src={src}
                 alt={`${media.alt} ${i + 1}`}
                 className="w-full h-full object-cover object-top"
+                loading="lazy"
               />
             </div>
           ))}
@@ -40,19 +41,16 @@ const ProjectMedia = ({ project }) => {
     if (!videoId) return null;
 
     return (
-      <div className="relative w-full pt-[56.25%] group"> {/* 16:9 Aspect Ratio */}
-        <iframe className="absolute top-0 left-0 w-full h-full pointer-events-none rounded-t-lg"
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&mute=1&amp;controls=0&disablekb=1&showinfo=0&modestbranding=1&rel=0`} 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="autoplay; encrypted-media; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-        ></iframe>
-        {/* Overlay div to prevent interactions */}
-        <div className="absolute top-0 left-0 w-full h-full rounded-t-lg"></div>
+      <div className="relative w-full pt-[56.25%] group rounded-t-lg overflow-hidden bg-black">
+        <img
+          className="absolute top-0 left-0 w-full h-full object-cover rounded-t-lg"
+          src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+          alt={`${project.title} preview`}
+          loading="lazy"
+        />
         {/* Play button overlay */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-          <div className="bg-black/50 rounded-full p-3">
+        <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
+          <div className="bg-red-600 rounded-full p-3 shadow-lg group-hover:scale-110 transition-transform">
             <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z"/>
             </svg>

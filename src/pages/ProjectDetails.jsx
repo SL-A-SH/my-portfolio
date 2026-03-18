@@ -1,8 +1,54 @@
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 import { projects } from '../constants/projects';
 import { ExternalLink, Calendar, User, Flag, AlertTriangle, ArrowLeft } from 'lucide-react';
 import FeatureGrid from '../components/FeatureGrid';
 import { Link } from 'react-router-dom';
+
+const getYouTubeId = (url) => {
+  const regex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+  const match = url?.match(regex);
+  return match ? match[1] : null;
+};
+
+const YouTubeFacade = ({ src, title }) => {
+  const [active, setActive] = useState(false);
+  const videoId = getYouTubeId(src);
+  if (!videoId) return null;
+
+  if (active) {
+    return (
+      <iframe
+        src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+        className="absolute top-0 left-0 w-full h-full"
+        title={title}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    );
+  }
+
+  return (
+    <button
+      onClick={() => setActive(true)}
+      className="absolute top-0 left-0 w-full h-full group"
+      aria-label={`Play ${title}`}
+    >
+      <img
+        src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+        alt={`${title} preview`}
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 flex items-center justify-center bg-black/25 group-hover:bg-black/35 transition-colors">
+        <div className="bg-red-600 rounded-full p-5 shadow-xl group-hover:scale-110 transition-transform">
+          <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </div>
+      </div>
+    </button>
+  );
+};
 
 const ProjectDetails = () => {
   const { id } = useParams();
@@ -60,13 +106,7 @@ const ProjectDetails = () => {
           {project.media?.type === 'youtube' ?
           (
             <div className="relative pt-[56.25%] rounded-xl overflow-hidden bg-gradient-to-br from-[#1a1f2b] to-[#2a2f3b] border border-gray-700/50">
-              <iframe
-                src={project.media.src.replace('youtu.be/', 'youtube.com/embed/')}
-                className="absolute top-0 left-0 w-full h-full"
-                title={project.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              <YouTubeFacade src={project.media.src} title={project.title} />
             </div>
           )
           : project.media?.type === 'screenshots' ?
@@ -79,6 +119,7 @@ const ProjectDetails = () => {
                       src={src}
                       alt={`${project.title} screenshot ${index + 1}`}
                       className="h-full w-auto object-contain"
+                      loading="lazy"
                     />
                   </div>
                 ))}

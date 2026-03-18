@@ -1,12 +1,12 @@
-import screenshot1 from '../assets/leaf-and-spine/screenshots/1.png';
-import screenshot2 from '../assets/leaf-and-spine/screenshots/2.png';
-import screenshot3 from '../assets/leaf-and-spine/screenshots/3.png';
-import screenshot4 from '../assets/leaf-and-spine/screenshots/4.png';
-import screenshot5 from '../assets/leaf-and-spine/screenshots/5.png';
-import screenshot6 from '../assets/leaf-and-spine/screenshots/6.png';
-import screenshot7 from '../assets/leaf-and-spine/screenshots/7.png';
-import screenshot8 from '../assets/leaf-and-spine/screenshots/8.png';
-import screenshot9 from '../assets/leaf-and-spine/screenshots/9.png';
+import screenshot1 from '../assets/leaf-and-spine/screenshots/1.png?format=webp&quality=82';
+import screenshot2 from '../assets/leaf-and-spine/screenshots/2.png?format=webp&quality=82';
+import screenshot3 from '../assets/leaf-and-spine/screenshots/3.png?format=webp&quality=82';
+import screenshot4 from '../assets/leaf-and-spine/screenshots/4.png?format=webp&quality=82';
+import screenshot5 from '../assets/leaf-and-spine/screenshots/5.png?format=webp&quality=82';
+import screenshot6 from '../assets/leaf-and-spine/screenshots/6.png?format=webp&quality=82';
+import screenshot7 from '../assets/leaf-and-spine/screenshots/7.png?format=webp&quality=82';
+import screenshot8 from '../assets/leaf-and-spine/screenshots/8.png?format=webp&quality=82';
+import screenshot9 from '../assets/leaf-and-spine/screenshots/9.png?format=webp&quality=82';
 
 export const projects = [
   {
