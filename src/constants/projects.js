@@ -45,6 +45,7 @@ export const projects = [
       'Built a dynamic in-app content store delivering unlockable UI assets such as bookshelves, book covers, and animated ambient environments',
       'Implemented secure server-side in-app purchase validation using Google Cloud Functions to verify store receipts and prevent fraudulent purchases',
       'Integrated Firebase Anonymous Authentication to enable account-less usage while maintaining secure purchase entitlements across devices',
+      'Implemented cross-platform push notification system using Firebase Cloud Messaging (FCM) and Apple Push Notification service (APNs)',
       'Developed persistent user customization systems supporting dynamic book spine design, cover personalization, and bookshelf configuration',
       'Optimized document rendering and navigation for smooth reading performance and responsive library browsing',
       'Deployed and maintained the application on Google Play and Apple App Store'
