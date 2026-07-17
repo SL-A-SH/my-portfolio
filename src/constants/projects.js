@@ -6,24 +6,23 @@ import screenshot5 from '../assets/leaf-and-spine/screenshots/5.png?format=webp&
 import screenshot6 from '../assets/leaf-and-spine/screenshots/6.png?format=webp&quality=82';
 import screenshot7 from '../assets/leaf-and-spine/screenshots/7.png?format=webp&quality=82';
 import screenshot8 from '../assets/leaf-and-spine/screenshots/8.png?format=webp&quality=82';
-import screenshot9 from '../assets/leaf-and-spine/screenshots/9.png?format=webp&quality=82';
 
 export const projects = [
   {
     id: 'leaf-and-spine',
     category: 'Mobile Apps',
     title: 'Leaf & Spine',
-    description: 'A cross-platform PDF & EPUB reader with customizable 3D bookshelves, immersive reading environments, and ambient soundscapes. Live on Google Play and Apple App Store.',
-    longDescription: `Leaf & Spine is a production mobile application I designed and shipped independently from the ground up. The app transforms digital reading into a personalized sanctuary. Users can import PDFs and EPUBs, organize them on beautifully rendered 3D bookshelves, and create the perfect reading atmosphere with ambient sounds and immersive environments.
-                      The app features a dynamic in-app content store with unlockable UI assets including bookshelves, book covers, and animated ambient environments. All premium purchases are secured with server-side validation via Google Cloud Functions, and Firebase Anonymous Authentication ensures account-less usage while maintaining entitlements across devices.
+    description: 'A cross-platform PDF, EPUB, comic & audiobook reader with customizable 3D bookshelves, offline-first storage, immersive reading environments, and ambient soundscapes. Live on Google Play and Apple App Store.',
+    longDescription: `Leaf & Spine is a production mobile application I designed and shipped independently from the ground up. The app transforms digital reading into a personalized sanctuary. Users can import PDF, EPUB, CBZ/CBR comics, and audiobooks, organize them on beautifully rendered 3D bookshelves, and create the perfect reading atmosphere with ambient sounds and immersive environments.
+                      Offline-first local storage built on SQLite gives readers full library access without a network connection. The app also features a dynamic in-app content store with unlockable UI assets including bookshelves, book covers, and animated ambient environments. All premium purchases are secured with server-side validation via Google Cloud Functions, and Firebase Anonymous Authentication ensures account-less usage while maintaining entitlements across devices.
                       Designed with a privacy-first architecture as no personal data is collected, yet secure purchase entitlements are maintained.`,
     media: {
       type: 'screenshots',
       src: screenshot1,
       alt: 'Leaf & Spine — 3D bookshelf reading app'
     },
-    screenshots: [screenshot1, screenshot2, screenshot3, screenshot4, screenshot5, screenshot6, screenshot7, screenshot8, screenshot9],
-    tags: ['React Native', 'Expo', 'Firebase', 'Google Cloud Functions', 'TypeScript', 'iOS', 'Android'],
+    screenshots: [screenshot1, screenshot2, screenshot3, screenshot4, screenshot5, screenshot6, screenshot7, screenshot8],
+    tags: ['React Native', 'Expo', 'Firebase', 'Google Cloud Functions', 'SQLite', 'TypeScript', 'iOS', 'Android'],
     playStoreLink: 'https://play.google.com/store/apps/details?id=com.experaforge.leafandspine&pcampaignid=web_share',
     appStoreLink: 'https://apps.apple.com/in/app/leaf-spine/id6758519785',
     timeline: 'Oct 2025 – Present',
@@ -31,7 +30,8 @@ export const projects = [
     features: [
       'Cross-platform iOS & Android — deployed to Google Play and Apple App Store',
       'Modular 3D bookshelf library with customizable designs and materials',
-      'Clean, distraction-free PDF and EPUB reader',
+      'Clean, distraction-free reader supporting PDF, EPUB, CBZ/CBR comics, and audiobooks',
+      'Offline-first local storage with SQLite — full library access without network connectivity',
       'Dynamic in-app content store with unlockable bookshelves, covers, and environments',
       'Immersive ambient environments with soundscapes (rain, fireplace, cafe, beach)',
       'Secure server-side in-app purchase validation via Google Cloud Functions',
@@ -41,7 +41,8 @@ export const projects = [
     ],
     responsibilities: [
       'Architected and developed the full application using React Native and Expo, supporting both iOS and Android deployments',
-      'Designed a modular library system allowing users to import, organize, and read PDF and EPUB documents within customizable 3D bookshelf environments',
+      'Designed a modular library system allowing users to import, organize, and read PDF, EPUB, CBZ/CBR and audio documents within customizable 3D bookshelf and ambient environments',
+      'Implemented offline-first local storage using SQLite, enabling full library access and reading without network connectivity',
       'Built a dynamic in-app content store delivering unlockable UI assets such as bookshelves, book covers, and animated ambient environments',
       'Implemented secure server-side in-app purchase validation using Google Cloud Functions to verify store receipts and prevent fraudulent purchases',
       'Integrated Firebase Anonymous Authentication to enable account-less usage while maintaining secure purchase entitlements across devices',
@@ -50,7 +51,7 @@ export const projects = [
       'Optimized document rendering and navigation for smooth reading performance and responsive library browsing',
       'Deployed and maintained the application on Google Play and Apple App Store'
     ],
-    technicalDetails: `Built with React Native and Expo for cross-platform deployment. Firebase provides anonymous authentication and real-time entitlement sync. Google Cloud Functions handle server-side receipt validation for both Apple and Google in-app purchases, preventing fraudulent access to premium content. The 3D bookshelf UI is built with custom rendering logic for performant, animated shelf environments. Expo EAS manages build and submission pipelines for both stores.`,
+    technicalDetails: `Built with React Native and Expo for cross-platform deployment. Offline-first local storage is powered by SQLite, giving users full library access without network connectivity. Firebase provides anonymous authentication and real-time entitlement sync. Google Cloud Functions handle server-side receipt validation for both Apple and Google in-app purchases, preventing fraudulent access to premium content. The 3D bookshelf UI is built with custom rendering logic for performant, animated shelf environments. Expo EAS manages build and submission pipelines for both stores.`,
     challenges: [
       'Implementing secure cross-platform in-app purchase validation without storing personal user data',
       'Building performant 3D bookshelf rendering with smooth animations on both iOS and Android',
@@ -67,8 +68,7 @@ export const projects = [
     Results show that GPU-driven rendering achieves substantial performance gains, particularly in scenarios with high object counts, validating the effectiveness of moving scene management computations to the GPU.`,
     media: {
       type: 'youtube',
-      src: 'https://youtu.be/BJ0ktjxmzzc',
-      thumbnail: '/api/placeholder/400/300'
+      src: 'https://youtu.be/BJ0ktjxmzzc'
     },
     tags: ['C++', 'DirectX11', 'HLSL', 'Qt'],
     demoLink: 'https://youtu.be/BJ0ktjxmzzc',
@@ -77,7 +77,7 @@ export const projects = [
       'Implemented DirectX11 rendering pipeline',
       'Implemented a Compute Shader Pipeline',
       'Created a robust benchmarking system capable of collecting detailed performance metrics including frame rates, draw calls, memory usage, and culling efficiency',
-      'Implemented a comprehensive performance monitoring interface that provides real-time visibility intorendering pipeline performance',
+      'Implemented a comprehensive performance monitoring interface that provides real-time visibility into rendering pipeline performance',
       'Conducted a systematic performance comparison between CPU-driven and GPU-driven rendering approaches across varying object counts and scene complexities'
     ],
     features: [
@@ -86,7 +86,7 @@ export const projects = [
       'Compute Shader Pipeline',
       'User Interface Layer'
     ],
-    timeline: 'May 2025 - July 2025',
+    timeline: 'May 2025 – Jul 2025',
     role: 'Rendering Engineer',
     challenges: [
       'GPU-CPU Synchronization',
@@ -105,8 +105,7 @@ export const projects = [
     a meticulously crafted environment.`,
     media: {
       type: 'youtube',
-      src: 'https://youtu.be/5R8MFhXC0Lw',
-      thumbnail: '/api/placeholder/400/300'
+      src: 'https://youtu.be/5R8MFhXC0Lw'
     },
     tags: ['Unreal Engine', 'C++', 'Blueprints', 'AI'],
     demoLink: 'https://youtu.be/5R8MFhXC0Lw',
@@ -122,7 +121,7 @@ export const projects = [
       'Interactive item pickup and inventory system',
       'Expansive open world environment'
     ],
-    timeline: 'July 2023 - Oct 2023',
+    timeline: 'Jul 2023 – Oct 2023',
     role: 'Gameplay Programmer',
     challenges: [
       'Implementing responsive combat mechanics',
@@ -139,8 +138,7 @@ export const projects = [
     inventory system and pickup mechanics.`,
     media: {
       type: 'youtube',
-      src: 'https://youtu.be/DUZof8BJ7TM',
-      thumbnail: '/api/placeholder/400/300'
+      src: 'https://youtu.be/DUZof8BJ7TM'
     },
     tags: ['Unreal Engine', 'C++', 'Blueprints', 'AI'],
     demoLink: 'https://youtu.be/DUZof8BJ7TM',
@@ -157,7 +155,7 @@ export const projects = [
       'Resource management (ammo, health)',
       'Interactive environment with collectible items'
     ],
-    timeline: 'Dec 2023 - Apr 2024',
+    timeline: 'Dec 2023 – Apr 2024',
     role: 'Gameplay Programmer',
     challenges: [
       'Implementing complex inventory system',
@@ -174,8 +172,7 @@ export const projects = [
     levels for high replayability.`,
     media: {
       type: 'youtube',
-      src: 'https://youtu.be/szF0RlDMpvw',
-      thumbnail: '/api/placeholder/400/300'
+      src: 'https://youtu.be/szF0RlDMpvw'
     },
     tags: ['Unreal Engine', 'C++', 'Blueprints', 'Game Jam'],
     demoLink: 'https://youtu.be/szF0RlDMpvw',
@@ -191,7 +188,7 @@ export const projects = [
       'Implemented features such as gun collection and weapon change effects',
       'Created a HUD for the player'
     ],
-    timeline: '6th Jan 2025 - 19th Jan 2025',
+    timeline: 'Jan 2025 (Game Jam)',
     role: 'Gameplay Programmer',
     challenges: [
       'Implementing procedural level generation',
@@ -209,8 +206,7 @@ export const projects = [
     while avoiding enemies, with multiplayer support for competitive gameplay.`,
     media: {
       type: 'youtube',
-      src: 'https://youtu.be/wL6tOVd26D0',
-      thumbnail: '/api/placeholder/400/300'
+      src: 'https://youtu.be/wL6tOVd26D0'
     },
     tags: ['Custom Engine', 'OpenGL', 'C++', 'Multiplayer'],
     demoLink: 'https://youtu.be/wL6tOVd26D0',
@@ -229,7 +225,7 @@ export const projects = [
       'Implemented network multiplayer functionality with client-server architecture, enabling real-time competition and score synchronization',
       'Developed game physics system including collision response, trigger zones for collectibles, and character state management'
     ],
-    timeline: '18th Nov 2024 - 13th Dec 2024',
+    timeline: 'Nov 2024 – Dec 2024',
     role: 'Developer',
     challenges: [
       'Working with custom game engine',
@@ -247,8 +243,7 @@ export const projects = [
     including UFO interactions and environmental changes.`,
     media: {
       type: 'youtube',
-      src: 'https://youtu.be/CCkT28HZl3M',
-      thumbnail: '/api/placeholder/400/300'
+      src: 'https://youtu.be/CCkT28HZl3M'
     },
     tags: ['OpenGL', 'C++', 'Graphics Programming', 'Shader Programming'],
     demoLink: 'https://youtu.be/CCkT28HZl3M',
@@ -269,7 +264,7 @@ export const projects = [
       'Implemented complex rendering techniques such as post-processing effects (bloom, blur), dynamic lighting, day/night cycle simulation and multiple camera angles',
       'Created interactive elements including UFO beam effects and environmental transitions'
     ],
-    timeline: '21st Oct 2024- 15th Nov 2024',
+    timeline: 'Oct 2024 – Nov 2024',
     role: 'Graphics Programmer',
     challenges: [
       'Implementing complex weather systems',
@@ -288,7 +283,6 @@ export const projects = [
     consistent functionality while adhering to platform-specific design guidelines.`,
     media: {
       type: 'image',
-      src: '/api/placeholder/400/300',
       alt: 'Banking application concept illustration'
     },
     mediaType: 'banking',
@@ -302,7 +296,7 @@ export const projects = [
     technicalDetails: `Built using React Native for cross-platform development, implementing 
     platform-specific optimizations. Features automated CI/CD pipeline for streamlined deployment 
     and rigorous security measures compliant with banking industry standards.`,
-    timeline: 'May 2019 - Apr 2021',
+    timeline: 'May 2019 – Apr 2021',
     role: 'Software Developer - Banca Sella',
     team: 'International Development Team',
     challenges: [
@@ -321,11 +315,10 @@ export const projects = [
     features for attendance tracking and real time quiz system.`,
     media: {
       type: 'image',
-      src: '/api/placeholder/400/300',
       alt: 'Educational platform concept'
     },
     mediaType: 'education',
-    tags: ['React', 'React-Native', 'WebRTC', 'Redis', 'Node.js', 'AWS','MongoDB', 'WebSockets', 'Android'],
+    tags: ['React', 'React Native', 'WebRTC', 'Redis', 'Node.js', 'AWS', 'MongoDB', 'WebSockets', 'Android'],
     features: [
       'Real-time chat with Redis synchronization',
       'Real-time quiz system',
@@ -338,7 +331,7 @@ export const projects = [
     technicalDetails: `Developed using React for web applications and native Android development. 
     Implements Redis for message synchronization, WebRTC for video conferencing, and real-time 
     WebSocket connections for chat functionality.`,
-    timeline: 'Oct 2017 - Apr 2019',
+    timeline: 'Oct 2017 – Apr 2019',
     role: 'Software Developer - Ahaguru',
     challenges: [
       'Implementing cross-server communication',
@@ -356,7 +349,6 @@ export const projects = [
     booking flow.`,
     media: {
       type: 'image',
-      src: '/api/placeholder/400/300',
       alt: 'Hotel booking application concept'
     },
     mediaType: 'hotel',
@@ -370,7 +362,7 @@ export const projects = [
     technicalDetails: `Built as a single-page application using AngularJS, featuring optimized 
     performance and seamless user experience. Implements RESTful API integration for real-time 
     data handling.`,
-    timeline: 'Mar 2017 - June 2017',
+    timeline: 'Mar 2017 – Jun 2017',
     role: 'Software Developer - Bookingjini',
     challenges: [
       'Optimizing application performance',
@@ -388,7 +380,6 @@ export const projects = [
     Designed to streamline the assessment process in educational settings.`,
     media: {
       type: 'image',
-      src: '/api/placeholder/400/300',
       alt: 'Mobile test taking platform illustration'
     },
     mediaType: 'test',
@@ -402,7 +393,7 @@ export const projects = [
     technicalDetails: `Developed for Android using React Native, with PhpMySQL 
     integration for real-time data synchronization. Features offline support and secure 
     test-taking environment.`,
-    timeline: 'Mar 2021 - June 2022',
+    timeline: 'Mar 2021 – Jun 2022',
     role: 'Mobile App Developer - Star Projects',
     challenges: [
       'Implementing secure test environment',

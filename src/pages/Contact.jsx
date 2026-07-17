@@ -1,5 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Mail, Github, Linkedin, MapPin, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
+import usePageMeta from '../hooks/usePageMeta';
+
+const fadeUpReveal = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+};
+
+const revealProps = {
+  initial: 'hidden',
+  whileInView: 'visible',
+  viewport: { once: true, margin: '-80px' },
+  variants: fadeUpReveal,
+};
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -45,36 +59,46 @@ const Contact = () => {
     }));
   };
 
-  useEffect(() => {
-    document.title = 'Contact — Aqeeb Rizwan';
-  }, []);
+  usePageMeta(
+    'Contact — Aqeeb Rizwan',
+    'Get in touch with Aqeeb Rizwan, Mobile Software Engineer — open to new roles, interesting projects, or a conversation about mobile development.'
+  );
 
   return (
     <main id="main-content" className="pt-20 px-4 sm:px-6 lg:px-8 min-h-screen text-white bg-gradient-to-b from-brand-mid to-brand-deep">
       <div className="max-w-6xl mx-auto py-12">
-        <div className="mb-14">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-3 text-white">
+        <motion.div className="mb-14" {...revealProps}>
+          <h1 className="font-display text-4xl sm:text-5xl font-bold mb-3 text-white">
             Get In Touch
           </h1>
-          <div className="w-10 h-0.5 bg-blue-500 mb-5"></div>
+          <div className="flex items-center gap-1.5 mb-5">
+            <div className="w-6 h-0.5 bg-brand-accent"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+          </div>
           <p className="text-lg text-gray-400 max-w-xl">
             Open to new roles, interesting projects, or just a conversation about mobile development.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="bg-gradient-to-br from-brand-card to-brand-surface p-8 rounded-xl border border-gray-700/50">
-            <h2 className="text-2xl font-bold mb-6 text-white">Contact Information</h2>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={fadeUpReveal}
+            className="bg-gradient-to-br from-brand-card to-brand-surface p-8 rounded-xl border border-gray-700/50"
+          >
+            <h2 className="font-display text-2xl font-bold mb-6 text-white">Contact Information</h2>
 
             <div className="space-y-6">
               <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center group-hover:bg-blue-600/30 transition-colors">
-                  <Mail className="w-6 h-6 text-blue-400" />
+                <div className="w-12 h-12 bg-brand-accent/20 rounded-lg flex items-center justify-center group-hover:bg-brand-accent/30 transition-colors">
+                  <Mail className="w-6 h-6 text-brand-accent" />
                 </div>
                 <div>
                   <h3 className="text-sm text-gray-400 font-medium">Email</h3>
-                  <a href="mailto:aqeeb.riz@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
+                  <a href="mailto:aqeeb.riz@gmail.com" className="text-gray-300 hover:text-brand-accent transition-colors font-medium">
                     aqeeb.riz@gmail.com
                   </a>
                 </div>
@@ -124,11 +148,18 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Form */}
-          <div className="bg-gradient-to-br from-brand-card to-brand-surface p-8 rounded-xl border border-gray-700/50">
-            <h2 className="text-2xl font-bold mb-6 text-white">Send a Message</h2>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={fadeUpReveal}
+            transition={{ delay: 0.1 }}
+            className="bg-gradient-to-br from-brand-card to-brand-surface p-8 rounded-xl border border-gray-700/50"
+          >
+            <h2 className="font-display text-2xl font-bold mb-6 text-white">Send a Message</h2>
 
             {submitStatus === 'success' && (
               <div className="mb-6 p-4 bg-green-600/20 border border-green-500/30 rounded-lg">
@@ -153,7 +184,7 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-brand-surface border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-brand-surface border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
                   placeholder="e.g. Jane Smith"
                   required
                   disabled={isSubmitting}
@@ -170,7 +201,7 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-brand-surface border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-brand-surface border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
                   placeholder="your.email@example.com"
                   required
                   disabled={isSubmitting}
@@ -187,22 +218,23 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={6}
-                  className="w-full px-4 py-3 bg-brand-surface border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+                  className="w-full px-4 py-3 bg-brand-surface border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all resize-none"
                   placeholder="Tell me about your project or opportunity..."
                   required
                   disabled={isSubmitting}
                 ></textarea>
               </div>
 
-              <button
+              <motion.button
+                whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-600 hover:bg-blue-500 disabled:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition-colors"
+                className="w-full bg-brand-accent hover:bg-brand-accentHover disabled:bg-gray-600 text-brand-deep disabled:text-white font-medium py-3 px-6 rounded-lg transition-colors"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </main>

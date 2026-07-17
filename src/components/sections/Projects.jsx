@@ -1,16 +1,33 @@
 // components/sections/Projects.jsx
-import { useState, useCallback, memo } from 'react';
+import { useState, useCallback, memo, forwardRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '../../constants/projects';
 import FeatureGrid from '../FeatureGrid';
 
+const fadeUpReveal = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+  exit: { opacity: 0, transition: { duration: 0.12 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: 'easeOut', delay: Math.min(i, 5) * 0.06 },
+  }),
+  exit: { opacity: 0, transition: { duration: 0.12 } },
+};
+
 // Semantic color system — each category has a distinct, purposeful color
 const CATEGORY_COLORS = {
-  'Mobile Apps':       { label: 'text-blue-400',    badge: 'bg-blue-600/20 text-blue-400 border-blue-500/30',    filter: 'bg-blue-600 text-white' },
+  'Mobile Apps':       { label: 'text-indigo-400',  badge: 'bg-indigo-600/20 text-indigo-400 border-indigo-500/30',    filter: 'bg-indigo-600 text-white' },
   'Game Development':  { label: 'text-sky-400',     badge: 'bg-sky-600/20 text-sky-400 border-sky-500/30',       filter: 'bg-sky-600 text-white'  },
   'Professional Work': { label: 'text-emerald-400', badge: 'bg-emerald-600/20 text-emerald-400 border-emerald-500/30', filter: 'bg-emerald-600 text-white' },
 };
-const DEFAULT_CATEGORY_COLORS = { label: 'text-blue-400', badge: 'bg-blue-600/20 text-blue-400 border-blue-500/30', filter: 'bg-blue-600 text-white' };
+const DEFAULT_CATEGORY_COLORS = { label: 'text-indigo-400', badge: 'bg-indigo-600/20 text-indigo-400 border-indigo-500/30', filter: 'bg-indigo-600 text-white' };
 
 const getCategoryColors = (category) => CATEGORY_COLORS[category] ?? DEFAULT_CATEGORY_COLORS;
 
@@ -173,7 +190,7 @@ const CardBadges = ({ project }) => (
         href={project.demoLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center bg-blue-600/90 hover:bg-blue-500 text-white px-2.5 py-1 rounded-md text-xs font-medium transition-colors duration-200 shadow-sm"
+        className="inline-flex items-center bg-brand-accent/90 hover:bg-brand-accentHover text-brand-deep px-2.5 py-1 rounded-md text-xs font-medium transition-colors duration-200 shadow-sm"
         onClick={(e) => e.stopPropagation()}
       >
         Demo
@@ -198,16 +215,23 @@ const CardBadges = ({ project }) => (
 
 // ─── Featured card (Leaf & Spine) ─────────────────────────────────────────────
 
-const FeaturedCard = memo(({ project, onClick }) => {
+const FeaturedCard = memo(forwardRef(({ project, onClick }, ref) => {
   const colors = getCategoryColors(project.category);
   return (
-  <div
+  <motion.div
+    ref={ref}
+    layout
+    initial="hidden"
+    whileInView="visible"
+    exit="exit"
+    viewport={{ once: true, margin: '-80px' }}
+    variants={fadeUpReveal}
     role="button"
     tabIndex={0}
     onClick={() => onClick(project.id)}
     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(project.id); } }}
     aria-label={`View details for ${project.title}`}
-    className="group grid grid-cols-1 lg:grid-cols-5 bg-gradient-to-br from-brand-card to-brand-surface rounded-2xl overflow-hidden border border-gray-700/50 hover:border-blue-500/30 cursor-pointer transition-colors duration-300 mb-5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-brand-mid"
+    className="group grid grid-cols-1 lg:grid-cols-5 bg-gradient-to-br from-brand-card to-brand-surface rounded-2xl overflow-hidden border border-gray-700/50 hover:border-brand-accent/30 hover:-translate-y-0.5 cursor-pointer transition-all duration-200 mb-5 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 focus:ring-offset-brand-mid"
   >
     {/* Content — left 2 cols */}
     <div className="lg:col-span-2 p-5 sm:p-8 flex flex-col justify-between">
@@ -217,7 +241,7 @@ const FeaturedCard = memo(({ project, onClick }) => {
           <span className={`text-xs px-2.5 py-0.5 rounded-full border ${colors.badge}`}>{project.role}</span>
         </div>
 
-        <h3 className="text-3xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
+        <h3 className="font-display text-3xl font-bold text-white mb-3 group-hover:text-brand-accent transition-colors duration-300">
           {project.title}
         </h3>
 
@@ -262,7 +286,7 @@ const FeaturedCard = memo(({ project, onClick }) => {
               App Store
             </a>
           )}
-          <span className="flex items-center gap-1 text-sm text-gray-500 group-hover:text-blue-400 transition-colors duration-300 ml-auto">
+          <span className="flex items-center gap-1 text-sm text-gray-500 group-hover:text-brand-accent transition-colors duration-300 ml-auto">
             View Details
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -276,22 +300,30 @@ const FeaturedCard = memo(({ project, onClick }) => {
     <div className="lg:col-span-3 relative min-h-[260px] lg:min-h-0 overflow-hidden bg-brand-base">
       <ProjectMedia project={project} isFeatured />
     </div>
-  </div>
+  </motion.div>
   );
-});
+}));
 
 // ─── Regular card ─────────────────────────────────────────────────────────────
 
-const ProjectCard = memo(({ project, onClick }) => {
+const ProjectCard = memo(forwardRef(({ project, onClick, index }, ref) => {
   const colors = getCategoryColors(project.category);
   return (
-  <div
+  <motion.div
+    ref={ref}
+    layout
+    custom={index}
+    initial="hidden"
+    whileInView="visible"
+    exit="exit"
+    viewport={{ once: true, margin: '-80px' }}
+    variants={cardVariants}
     role="button"
     tabIndex={0}
     onClick={() => onClick(project.id)}
     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(project.id); } }}
     aria-label={`View details for ${project.title}`}
-    className="group bg-gradient-to-br from-brand-card to-brand-surface rounded-xl overflow-hidden border border-gray-700/50 hover:border-blue-500/30 cursor-pointer transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-brand-mid flex flex-col"
+    className="group bg-gradient-to-br from-brand-card to-brand-surface rounded-xl overflow-hidden border border-gray-700/50 hover:border-brand-accent/30 hover:-translate-y-0.5 cursor-pointer transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 focus:ring-offset-brand-mid flex flex-col"
   >
     <div className="relative flex-shrink-0">
       <ProjectMedia project={project} />
@@ -306,7 +338,7 @@ const ProjectCard = memo(({ project, onClick }) => {
         </span>
       </div>
 
-      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300 leading-snug">
+      <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-brand-accent transition-colors duration-300 leading-snug">
         {project.title}
       </h3>
 
@@ -329,7 +361,7 @@ const ProjectCard = memo(({ project, onClick }) => {
 
       <div className="flex items-center justify-between text-xs text-gray-500 mt-auto pt-3 border-t border-gray-700/30">
         <span>{project.timeline}</span>
-        <span className="flex items-center gap-1 group-hover:text-blue-400 transition-colors duration-300">
+        <span className="flex items-center gap-1 group-hover:text-brand-accent transition-colors duration-300">
           View Details
           <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -337,9 +369,9 @@ const ProjectCard = memo(({ project, onClick }) => {
         </span>
       </div>
     </div>
-  </div>
+  </motion.div>
   );
-});
+}));
 
 // ─── Main section ─────────────────────────────────────────────────────────────
 
@@ -365,28 +397,39 @@ const Projects = () => {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section header — left aligned */}
-        <div className="mb-10">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-3">Featured Projects</h2>
-          <div className="w-10 h-0.5 bg-blue-500"></div>
-        </div>
+        <motion.div
+          className="mb-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          variants={fadeUpReveal}
+        >
+          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-3">Featured Projects</h2>
+          <div className="flex items-center gap-1.5">
+            <div className="w-6 h-0.5 bg-brand-accent"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+          </div>
+        </motion.div>
 
         {/* Category filter — left aligned */}
         <div className="flex flex-wrap gap-2 mb-10">
-          <button
+          <motion.button
+            whileTap={{ scale: 0.96 }}
             onClick={() => setActiveCategory('All')}
             className={`px-5 py-2.5 rounded-full text-sm font-medium transition-colors duration-200 ${
               activeCategory === 'All'
-                ? 'bg-blue-600 text-white'
+                ? 'bg-brand-accent text-brand-deep'
                 : 'bg-brand-surface text-gray-400 hover:bg-brand-hover hover:text-white border border-gray-700/60'
             }`}
           >
             All
-          </button>
+          </motion.button>
           {categories.map((category) => {
             const colors = getCategoryColors(category);
             return (
-              <button
+              <motion.button
                 key={category}
+                whileTap={{ scale: 0.96 }}
                 onClick={() => setActiveCategory(category)}
                 className={`px-5 py-2.5 rounded-full text-sm font-medium transition-colors duration-200 ${
                   activeCategory === category
@@ -395,21 +438,25 @@ const Projects = () => {
                 }`}
               >
                 {category}
-              </button>
+              </motion.button>
             );
           })}
         </div>
 
         {/* Featured card */}
-        {featuredProject && (
-          <FeaturedCard project={featuredProject} onClick={handleProjectClick} />
-        )}
+        <AnimatePresence mode="popLayout">
+          {featuredProject && (
+            <FeaturedCard key={featuredProject.id} project={featuredProject} onClick={handleProjectClick} />
+          )}
+        </AnimatePresence>
 
         {/* Supporting grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {gridProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} onClick={handleProjectClick} />
-          ))}
+          <AnimatePresence mode="popLayout">
+            {gridProjects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} onClick={handleProjectClick} index={index} />
+            ))}
+          </AnimatePresence>
         </div>
 
       </div>

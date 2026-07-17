@@ -21,9 +21,9 @@ const FeatureGrid = ({ type }) => {
     switch(type) {
       case 'banking':
         return [
-          { icon: <Smartphone className="w-8 h-8" />, label: 'Cross-Platform', color: 'text-blue-400' },
-          { icon: <Shield className="w-8 h-8" />, label: 'Secure',           color: 'text-blue-400' },
-          { icon: <Clock className="w-8 h-8" />, label: 'Real-time',         color: 'text-blue-400' },
+          { icon: <Smartphone className="w-8 h-8" />, label: 'Cross-Platform', color: 'text-indigo-400' },
+          { icon: <Shield className="w-8 h-8" />, label: 'Secure',           color: 'text-indigo-400' },
+          { icon: <Clock className="w-8 h-8" />, label: 'Real-time',         color: 'text-indigo-400' },
         ];
       case 'education':
         return [
@@ -39,9 +39,9 @@ const FeatureGrid = ({ type }) => {
         ];
       case 'test':
         return [
-          { icon: <Timer className="w-8 h-8" />, label: 'Timer',   color: 'text-amber-400' },
-          { icon: <CheckCircle className="w-8 h-8" />, label: 'Results', color: 'text-amber-400' },
-          { icon: <Pencil className="w-8 h-8" />, label: 'Tests',  color: 'text-amber-400' },
+          { icon: <Timer className="w-8 h-8" />, label: 'Timer',   color: 'text-violet-400' },
+          { icon: <CheckCircle className="w-8 h-8" />, label: 'Results', color: 'text-violet-400' },
+          { icon: <Pencil className="w-8 h-8" />, label: 'Tests',  color: 'text-violet-400' },
         ];
       default:
         return [];

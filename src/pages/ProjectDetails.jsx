@@ -1,12 +1,13 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import usePageMeta from '../hooks/usePageMeta';
 
 const CATEGORY_COLORS = {
-  'Mobile Apps':       { label: 'text-blue-400',    badge: 'bg-blue-600/20 text-blue-400 border-blue-500/30' },
+  'Mobile Apps':       { label: 'text-indigo-400',  badge: 'bg-indigo-600/20 text-indigo-400 border-indigo-500/30' },
   'Game Development':  { label: 'text-sky-400',     badge: 'bg-sky-600/20 text-sky-400 border-sky-500/30'   },
   'Professional Work': { label: 'text-emerald-400', badge: 'bg-emerald-600/20 text-emerald-400 border-emerald-500/30' },
 };
-const getCategoryColors = (cat) => CATEGORY_COLORS[cat] ?? { label: 'text-blue-400', badge: 'bg-blue-600/20 text-blue-400 border-blue-500/30' };
+const getCategoryColors = (cat) => CATEGORY_COLORS[cat] ?? { label: 'text-indigo-400', badge: 'bg-indigo-600/20 text-indigo-400 border-indigo-500/30' };
 import { projects } from '../constants/projects';
 import { ExternalLink, AlertTriangle, ArrowLeft } from 'lucide-react';
 import FeatureGrid from '../components/FeatureGrid';
@@ -61,18 +62,17 @@ const ProjectDetails = () => {
   const { id } = useParams();
   const project = projects.find(p => p.id === id);
 
-  useEffect(() => {
-    document.title = project
-      ? `${project.title} — Aqeeb Rizwan`
-      : 'Project Not Found — Aqeeb Rizwan';
-  }, [project]);
+  usePageMeta(
+    project ? `${project.title} — Aqeeb Rizwan` : 'Project Not Found — Aqeeb Rizwan',
+    project ? project.description : undefined
+  );
 
   if (!project) {
     return (
       <div className="pt-20 min-h-screen flex items-center justify-center text-white bg-gradient-to-b from-brand-mid to-brand-deep">
         <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Project not found</h2>
-          <Link to="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors group">
+          <h2 className="font-display text-2xl font-bold mb-4">Project not found</h2>
+          <Link to="/" className="inline-flex items-center gap-2 text-brand-accent hover:text-brand-accentHover transition-colors group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Projects
           </Link>
@@ -88,7 +88,7 @@ const ProjectDetails = () => {
         <div className="mb-8">
           <Link 
             to="/" 
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors group"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-brand-accent transition-colors group"
           >
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             Back to Projects
@@ -109,10 +109,13 @@ const ProjectDetails = () => {
               )}
             </div>
           ); })()}
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
+          <h1 className="font-display text-4xl sm:text-5xl font-bold mb-4 text-white">
             {project.title}
           </h1>
-          <div className="w-10 h-0.5 bg-blue-500 mb-5"></div>
+          <div className="flex items-center gap-1.5 mb-5">
+            <div className="w-6 h-0.5 bg-brand-accent"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+          </div>
           <p className="text-lg text-gray-400 max-w-3xl">
             {project.description}
           </p>
@@ -167,18 +170,18 @@ const ProjectDetails = () => {
           <div className="lg:col-span-3 space-y-12 order-2 lg:order-1">
             {/* Description */}
             <section>
-              <h2 className="text-3xl font-bold mb-6 text-white">About this project</h2>
+              <h2 className="font-display text-3xl font-bold mb-6 text-white">About this project</h2>
               <p className="text-gray-300 text-lg leading-relaxed">{project.longDescription}</p>
             </section>
 
             {/* Features */}
             {project.features && (
               <section>
-                <h2 className="text-3xl font-bold mb-6 text-white">Key Features</h2>
+                <h2 className="font-display text-3xl font-bold mb-6 text-white">Key Features</h2>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {project.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-brand-accent rounded-full mt-2 flex-shrink-0"></div>
                       <span className="text-gray-300">{feature}</span>
                     </li>
                   ))}
@@ -189,7 +192,7 @@ const ProjectDetails = () => {
             {/* Technical Details */}
             {project.technicalDetails && (
               <section>
-                <h2 className="text-3xl font-bold mb-6 text-white">Technical Details</h2>
+                <h2 className="font-display text-3xl font-bold mb-6 text-white">Technical Details</h2>
                 <p className="text-gray-300 text-lg leading-relaxed">{project.technicalDetails}</p>
               </section>
             )}
@@ -197,7 +200,7 @@ const ProjectDetails = () => {
             {/* Responsibilities */}
             {project.responsibilities && (
               <section>
-                <h2 className="text-3xl font-bold mb-6 text-white">My Responsibilities</h2>
+                <h2 className="font-display text-3xl font-bold mb-6 text-white">My Responsibilities</h2>
                 <ul className="space-y-4">
                   {project.responsibilities.map((responsibility, index) => (
                     <li key={index} className="flex items-start gap-4">
@@ -212,7 +215,7 @@ const ProjectDetails = () => {
             {/* Challenges */}
             {project.challenges && (
               <section>
-                <h2 className="text-3xl font-bold mb-6 text-white">Challenges Overcome</h2>
+                <h2 className="font-display text-3xl font-bold mb-6 text-white">Challenges Overcome</h2>
                 <ul className="space-y-4">
                   {project.challenges.map((challenge, index) => (
                     <li key={index} className="flex items-start gap-4">
@@ -229,7 +232,7 @@ const ProjectDetails = () => {
           <div className="lg:col-span-1 space-y-6 order-1 lg:order-2">
             {/* Project Info Card */}
             <div className="bg-gradient-to-br from-brand-card to-brand-surface p-6 rounded-xl border border-gray-700/50 sticky top-24">
-              <h2 className="text-xl font-bold mb-6 text-white">Project Info</h2>
+              <h2 className="font-display text-xl font-bold mb-6 text-white">Project Info</h2>
               
               {/* Technologies */}
               <div className="mb-6">
@@ -300,7 +303,7 @@ const ProjectDetails = () => {
                       href={project.demoLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-3 rounded-lg text-center transition-colors flex items-center justify-center gap-2 font-medium"
+                      className="bg-brand-accent hover:bg-brand-accentHover text-brand-deep px-4 py-3 rounded-lg text-center transition-colors flex items-center justify-center gap-2 font-medium"
                     >
                       <ExternalLink className="w-4 h-4" />
                       View Demo

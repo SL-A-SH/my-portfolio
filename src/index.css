@@ -1,9 +1,15 @@
+@import '@fontsource/fraunces/latin-600.css';
+@import '@fontsource/fraunces/latin-700.css';
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-500.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html, body {
   background-color: #0a0d14;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -13,4 +19,134 @@ html, body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ─── Bookshelf hero signature element ──────────────────────────────────── */
+
+.bookshelf-scene {
+  position: relative;
+  perspective: 1200px;
+  padding: 8px 12px 0;
+}
+
+.bookshelf-glow {
+  position: absolute;
+  inset: -25% -15% -10% -15%;
+  background: radial-gradient(circle at 60% 35%, rgba(217, 154, 61, 0.28), transparent 60%);
+  pointer-events: none;
+  animation: bookshelf-breathe 8s ease-in-out infinite;
+}
+
+@keyframes bookshelf-breathe {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+
+.bookshelf-group {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 26px;
+  transform-style: preserve-3d;
+  transform: rotateY(-12deg);
+}
+
+.bookshelf-book {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: var(--spine-w, 36px);
+  height: 200px;
+  flex-shrink: 0;
+  transform-style: preserve-3d;
+  border-radius: 4px;
+}
+
+.bookshelf-book:hover,
+.bookshelf-book:focus-visible {
+  z-index: 10;
+}
+
+.bookshelf-book:focus-visible {
+  outline: 2px solid #d99a3d;
+  outline-offset: 4px;
+}
+
+.bookshelf-book-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bookshelf-book:hover .bookshelf-book-inner,
+.bookshelf-book:focus-visible .bookshelf-book-inner {
+  transform: rotateY(-40deg);
+}
+
+.bookshelf-spine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--spine-top), var(--spine-bottom));
+  border-radius: 3px 1px 1px 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  box-shadow:
+    inset -3px 0 6px rgba(0, 0, 0, 0.3),
+    inset 2px 0 0 rgba(255, 255, 255, 0.15);
+}
+
+.bookshelf-spine-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(15, 20, 25, 0.85);
+  white-space: nowrap;
+  max-height: 92%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookshelf-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 100%;
+  transform-origin: left center;
+  transform: translateX(var(--spine-w, 36px)) rotateY(90deg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.3));
+  border-radius: 0 2px 2px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 4px;
+  backface-visibility: hidden;
+}
+
+.bookshelf-cover-tag {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 90%;
+}
+
+.bookshelf-plank {
+  height: 14px;
+  margin-top: -2px;
+  background: linear-gradient(180deg, #3a2a1a, #1f150c);
+  border-radius: 2px;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.45);
 }
