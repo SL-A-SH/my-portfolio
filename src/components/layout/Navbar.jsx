@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { EASE_OUT } from '../../constants/motion';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,10 +31,10 @@ const Navbar = () => {
           {/* Logo/Brand */}
           <Link to="/" className="flex-shrink-0 group">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-brand-accent rounded-lg flex items-center justify-center font-bold text-brand-deep group-hover:scale-110 transition-transform duration-300">
+              <div className="w-8 h-8 border border-brand-accent/70 rounded-sm flex items-center justify-center font-mono text-xs font-medium text-brand-accent group-hover:bg-brand-accent group-hover:text-brand-base transition-colors duration-300">
                 AR
               </div>
-              <span className="font-display text-xl font-bold text-white">
+              <span className="font-display text-lg font-bold tracking-tight text-white">
                 Aqeeb Rizwan
               </span>
             </div>
@@ -84,7 +85,7 @@ const Navbar = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            transition={{ duration: 0.2, ease: EASE_OUT }}
             className="md:hidden overflow-hidden bg-gradient-to-b from-brand-card to-brand-deep border-t border-gray-700/50 backdrop-blur-md"
           >
             <div className="px-2 pt-2 pb-3 space-y-1">

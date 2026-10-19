@@ -1,10 +1,11 @@
 import { Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 import usePageMeta from '../hooks/usePageMeta';
+import { EASE_OUT } from '../constants/motion';
 
 const fadeUpReveal = {
   hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: EASE_OUT } },
 };
 
 const revealProps = {
@@ -18,13 +19,13 @@ const cardReveal = (i) => ({
   initial: { opacity: 0, y: 16 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: '-80px' },
-  transition: { duration: 0.4, ease: 'easeOut', delay: Math.min(i, 5) * 0.06 },
+  transition: { duration: 0.4, ease: EASE_OUT, delay: Math.min(i, 5) * 0.06 },
 });
 
 const About = () => {
   usePageMeta(
     'About — Aqeeb Rizwan',
-    'Mobile Software Engineer with 4+ years of experience across fintech, ed-tech and travel-tech — real-time communication, offline-first storage, and AI-native chat.'
+    'Gameplay and graphics programmer with an MSc in Computer Games Engineering — Unreal Engine, custom C++ engines, DirectX 11 and OpenGL — plus 4+ years shipping production software.'
   );
 
   return (
@@ -39,8 +40,8 @@ const About = () => {
             <div className="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
           </div>
           <p className="text-lg text-gray-400 max-w-2xl mb-5">
-            Mobile Software Engineer specialising in React Native —
-            building cross-platform apps that ship to the App Store and Google Play.
+            Gameplay &amp; graphics programmer — I write the combat, AI, networking and
+            rendering code that makes games feel right.
           </p>
           <a
             href={`${import.meta.env.BASE_URL}Aqeeb_Rizwan_Resume.pdf`}
@@ -57,76 +58,66 @@ const About = () => {
             <motion.section {...revealProps}>
               <h2 className="font-display text-3xl font-bold mb-6 text-white">Background</h2>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                I'm a Mobile Software Engineer with 4+ years of experience building cross-platform apps with React Native
-                across fintech, ed-tech, and travel-tech. I specialise in real-time communication (WebSockets, Redis),
-                offline-first storage (SQLite), and AI-native chat experiences with streaming responses.
+                I'm a gameplay and graphics programmer with an MSc in Computer Games Engineering from Newcastle
+                University. I've built third-person combat and enemy AI in Unreal Engine with C++ and Blueprints,
+                networked multiplayer on a custom C++ engine, atmospheric effects and post-processing in OpenGL, and a
+                GPU-driven DirectX 11 renderer that pushes 5,000 objects through compute-shader scene management.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed">
-                In 2025, I shipped Leaf &amp; Spine — an independent reading app with 3D bookshelves and immersive
-                environments — to both Google Play and the Apple App Store. I'm drawn to apps that are productive or
-                creative: tools that help people read, learn, focus, or make things. My background spans mobile, backend,
-                and cloud infrastructure, so I'm comfortable taking a feature from design all the way through to store
-                deployment.
+                Before games, I spent 4+ years shipping production software across fintech, ed-tech and travel-tech —
+                real-time systems, cross-platform apps, and the build and release pipelines behind them. In 2025 I
+                shipped Leaf &amp; Spine, a reading app with 3D bookshelves and ambient environments, solo to both app
+                stores. That experience is what I bring to a game team: I know what it takes to get a build from
+                prototype to players.
               </p>
             </motion.section>
 
             <motion.section {...revealProps}>
               <h2 className="font-display text-3xl font-bold mb-6 text-white">Skills & Technologies</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="bg-gradient-to-br from-brand-card to-brand-surface p-6 rounded-xl border border-gray-700/50">
-                  <h3 className="font-display text-xl font-semibold mb-4 text-brand-accent">Mobile</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['React Native', 'Expo', 'TypeScript', 'Android', 'iOS'].map(skill => (
-                      <span key={skill} className="bg-brand-surface text-gray-300 px-3 py-1.5 rounded-full text-sm border border-gray-600/50">
-                        {skill}
-                      </span>
-                    ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { label: 'Engines & Graphics', skills: ['Unreal Engine', 'DirectX 11', 'OpenGL', 'HLSL', 'Compute Shaders', 'Custom C++ Engines'] },
+                  { label: 'Gameplay Systems', skills: ['Combat', 'Enemy AI', 'Inventory', 'Procedural Generation', 'Networked Multiplayer', 'HUD'] },
+                  { label: 'Languages', skills: ['C++', 'Blueprints', 'TypeScript', 'JavaScript', 'Python'] },
+                  { label: 'Performance & Tools', skills: ['GPU Profiling', 'Benchmarking', 'Qt', 'Git', 'GitHub Actions'] },
+                  { label: 'Beyond Games', skills: ['React Native', 'Expo', 'Firebase', 'Node.js', 'WebSockets', 'Redis'] },
+                ].map((group, i) => (
+                  <div key={group.label} className="bg-brand-deep p-6 rounded-lg border border-white/10">
+                    <h3 className={`hud-label mb-4 ${i === 0 ? 'text-brand-accent' : 'text-gray-400'}`}>{group.label}</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {group.skills.map(skill => (
+                        <span key={skill} className="bg-brand-surface text-gray-300 px-3 py-1.5 rounded-full text-sm border border-gray-600/50">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                ))}
+              </div>
+            </motion.section>
 
-                <div className="bg-gradient-to-br from-brand-card to-brand-surface p-6 rounded-xl border border-gray-700/50">
-                  <h3 className="font-display text-xl font-semibold mb-4 text-purple-400">State Management</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['Redux', 'Zustand', 'Context API'].map(skill => (
-                      <span key={skill} className="bg-brand-surface text-gray-300 px-3 py-1.5 rounded-full text-sm border border-gray-600/50">
-                        {skill}
-                      </span>
-                    ))}
+            <motion.section {...revealProps}>
+              <h2 className="font-display text-3xl font-bold mb-6 text-white">Education</h2>
+              <div className="space-y-6">
+                <motion.div {...cardReveal(0)} className="bg-gradient-to-br from-brand-card to-brand-surface p-6 rounded-xl border border-gray-700/50">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1.5 sm:gap-0">
+                    <div>
+                      <h3 className="font-display text-xl font-semibold text-white">MSc Computer Games Engineering</h3>
+                      <p className="text-gray-300 font-medium mt-1">Newcastle University</p>
+                    </div>
+                    <span className="text-sm text-gray-400 bg-gray-700/50 px-3 py-1 rounded-full">2024 – 2025</span>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="bg-gradient-to-br from-brand-card to-brand-surface p-6 rounded-xl border border-gray-700/50">
-                  <h3 className="font-display text-xl font-semibold mb-4 text-green-400">Fullstack</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['React', 'Node.js', 'FastAPI', 'Firebase', 'Google Cloud Functions', 'REST APIs', 'WebSockets'].map(skill => (
-                      <span key={skill} className="bg-brand-surface text-gray-300 px-3 py-1.5 rounded-full text-sm border border-gray-600/50">
-                        {skill}
-                      </span>
-                    ))}
+                <motion.div {...cardReveal(1)} className="bg-gradient-to-br from-brand-card to-brand-surface p-6 rounded-xl border border-gray-700/50">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1.5 sm:gap-0">
+                    <div>
+                      <h3 className="font-display text-xl font-semibold text-white">B.Tech Computer Science</h3>
+                      <p className="text-gray-300 font-medium mt-1">Gandhi Institute For Education And Technology</p>
+                    </div>
+                    <span className="text-sm text-gray-400 bg-gray-700/50 px-3 py-1 rounded-full">2012 – 2016</span>
                   </div>
-                </div>
-
-                <div className="bg-gradient-to-br from-brand-card to-brand-surface p-6 rounded-xl border border-gray-700/50">
-                  <h3 className="font-display text-xl font-semibold mb-4 text-teal-400">Data & Storage</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['SQLite', 'NoSQL', 'SQL', 'Redis'].map(skill => (
-                      <span key={skill} className="bg-brand-surface text-gray-300 px-3 py-1.5 rounded-full text-sm border border-gray-600/50">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-br from-brand-card to-brand-surface p-6 rounded-xl border border-gray-700/50">
-                  <h3 className="font-display text-xl font-semibold mb-4 text-sky-400">Cloud & DevOps</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['Google Cloud Platform', 'AWS', 'CI/CD', 'Expo EAS', 'Git', 'GitHub Actions'].map(skill => (
-                      <span key={skill} className="bg-brand-surface text-gray-300 px-3 py-1.5 rounded-full text-sm border border-gray-600/50">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                </motion.div>
               </div>
             </motion.section>
 
@@ -190,31 +181,6 @@ const About = () => {
                 </motion.div>
               </div>
             </motion.section>
-
-            <motion.section {...revealProps}>
-              <h2 className="font-display text-3xl font-bold mb-6 text-white">Education</h2>
-              <div className="space-y-6">
-                <motion.div {...cardReveal(0)} className="bg-gradient-to-br from-brand-card to-brand-surface p-6 rounded-xl border border-gray-700/50">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1.5 sm:gap-0">
-                    <div>
-                      <h3 className="font-display text-xl font-semibold text-white">MSc Computer Games Engineering</h3>
-                      <p className="text-gray-300 font-medium mt-1">Newcastle University</p>
-                    </div>
-                    <span className="text-sm text-gray-400 bg-gray-700/50 px-3 py-1 rounded-full">2024 – 2025</span>
-                  </div>
-                </motion.div>
-
-                <motion.div {...cardReveal(1)} className="bg-gradient-to-br from-brand-card to-brand-surface p-6 rounded-xl border border-gray-700/50">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1.5 sm:gap-0">
-                    <div>
-                      <h3 className="font-display text-xl font-semibold text-white">B.Tech Computer Science</h3>
-                      <p className="text-gray-300 font-medium mt-1">Gandhi Institute For Education And Technology</p>
-                    </div>
-                    <span className="text-sm text-gray-400 bg-gray-700/50 px-3 py-1 rounded-full">2012 – 2016</span>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.section>
           </div>
 
           <div className="lg:col-span-1">
@@ -236,17 +202,17 @@ const About = () => {
                 <div>
                   <h3 className="text-sm text-gray-400 mb-2 font-medium">Interests</h3>
                   <ul className="text-gray-300 space-y-1">
-                    <li>Productive & Creative Apps</li>
-                    <li>Mobile UX & Performance</li>
-                    <li>Cloud Architecture</li>
-                    <li>In-App Monetisation</li>
+                    <li>Combat & Game Feel</li>
+                    <li>GPU-Driven Rendering</li>
+                    <li>Engine Architecture</li>
+                    <li>Networked Gameplay</li>
                   </ul>
                 </div>
 
                 <div>
                   <h3 className="text-sm text-gray-400 mb-2 font-medium">Tools</h3>
                   <div className="flex flex-wrap gap-2">
-                    {['Git', 'Expo EAS', 'GitHub Actions', 'Cursor', 'Claude Code'].map(tool => (
+                    {['Unreal Editor', 'Git', 'Qt', 'GitHub Actions', 'Claude Code'].map(tool => (
                       <span key={tool} className="bg-brand-surface text-gray-300 px-2 py-1 rounded text-xs border border-gray-600/50">{tool}</span>
                     ))}
                   </div>

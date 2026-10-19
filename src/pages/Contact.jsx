@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { Mail, Github, Linkedin, MapPin, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import usePageMeta from '../hooks/usePageMeta';
+import { EASE_OUT } from '../constants/motion';
 
 const fadeUpReveal = {
   hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: EASE_OUT } },
 };
 
 const revealProps = {

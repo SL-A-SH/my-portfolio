@@ -7,6 +7,12 @@ import screenshot6 from '../assets/leaf-and-spine/screenshots/6.png?format=webp&
 import screenshot7 from '../assets/leaf-and-spine/screenshots/7.png?format=webp&quality=82';
 import screenshot8 from '../assets/leaf-and-spine/screenshots/8.png?format=webp&quality=82';
 
+import hackSlashPoster from '../assets/games/hack-slash.jpg?w=1600&format=webp&quality=78';
+import shooterPoster from '../assets/games/shooter.jpg?w=1600&format=webp&quality=78';
+import catMazePoster from '../assets/games/cat-maze.jpg?w=1280&format=webp&quality=78';
+import marsPoster from '../assets/games/mars.jpg?format=webp&quality=82';
+import roguelikePoster from '../assets/games/roguelike.jpg?format=webp&quality=82';
+
 export const projects = [
   {
     id: 'leaf-and-spine',
@@ -105,7 +111,8 @@ export const projects = [
     a meticulously crafted environment.`,
     media: {
       type: 'youtube',
-      src: 'https://youtu.be/5R8MFhXC0Lw'
+      src: 'https://youtu.be/5R8MFhXC0Lw',
+      poster: hackSlashPoster
     },
     tags: ['Unreal Engine', 'C++', 'Blueprints', 'AI'],
     demoLink: 'https://youtu.be/5R8MFhXC0Lw',
@@ -138,7 +145,8 @@ export const projects = [
     inventory system and pickup mechanics.`,
     media: {
       type: 'youtube',
-      src: 'https://youtu.be/DUZof8BJ7TM'
+      src: 'https://youtu.be/DUZof8BJ7TM',
+      poster: shooterPoster
     },
     tags: ['Unreal Engine', 'C++', 'Blueprints', 'AI'],
     demoLink: 'https://youtu.be/DUZof8BJ7TM',
@@ -172,7 +180,8 @@ export const projects = [
     levels for high replayability.`,
     media: {
       type: 'youtube',
-      src: 'https://youtu.be/szF0RlDMpvw'
+      src: 'https://youtu.be/szF0RlDMpvw',
+      poster: roguelikePoster
     },
     tags: ['Unreal Engine', 'C++', 'Blueprints', 'Game Jam'],
     demoLink: 'https://youtu.be/szF0RlDMpvw',
@@ -206,7 +215,8 @@ export const projects = [
     while avoiding enemies, with multiplayer support for competitive gameplay.`,
     media: {
       type: 'youtube',
-      src: 'https://youtu.be/wL6tOVd26D0'
+      src: 'https://youtu.be/wL6tOVd26D0',
+      poster: catMazePoster
     },
     tags: ['Custom Engine', 'OpenGL', 'C++', 'Multiplayer'],
     demoLink: 'https://youtu.be/wL6tOVd26D0',
@@ -243,7 +253,8 @@ export const projects = [
     including UFO interactions and environmental changes.`,
     media: {
       type: 'youtube',
-      src: 'https://youtu.be/CCkT28HZl3M'
+      src: 'https://youtu.be/CCkT28HZl3M',
+      poster: marsPoster
     },
     tags: ['OpenGL', 'C++', 'Graphics Programming', 'Shader Programming'],
     demoLink: 'https://youtu.be/CCkT28HZl3M',

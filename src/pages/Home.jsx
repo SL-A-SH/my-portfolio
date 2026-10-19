@@ -4,8 +4,8 @@ import Projects from '../components/sections/Projects';
 
 const Home = () => {
   usePageMeta(
-    'Aqeeb Rizwan — Mobile Software Engineer',
-    'Mobile Software Engineer with 4+ years in React Native — real-time, AI-native and offline-first apps. Shipped Leaf & Spine to the App Store and Google Play.'
+    'Aqeeb Rizwan — Gameplay & Graphics Programmer',
+    'Gameplay and graphics programmer — combat, AI and multiplayer in Unreal Engine and custom C++ engines, GPU-driven rendering in DirectX 11 and OpenGL. MSc Computer Games Engineering.'
   );
 
   return (

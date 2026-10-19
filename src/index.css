@@ -1,11 +1,17 @@
-@import '@fontsource/fraunces/latin-600.css';
-@import '@fontsource/fraunces/latin-700.css';
+@import '@fontsource/space-grotesk/latin-500.css';
+@import '@fontsource/space-grotesk/latin-700.css';
 @import '@fontsource/inter/latin-400.css';
 @import '@fontsource/inter/latin-500.css';
+@import '@fontsource/jetbrains-mono/latin-500.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Expo-out — mirrors EASE_OUT in src/constants/motion.js */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
 
 html, body {
   background-color: #0a0d14;
@@ -21,132 +27,65 @@ html, body {
   }
 }
 
-/* ─── Bookshelf hero signature element ──────────────────────────────────── */
+/* ─── HUD language ──────────────────────────────────────────────────────── */
 
-.bookshelf-scene {
-  position: relative;
-  perspective: 1200px;
-  padding: 8px 12px 0;
-}
-
-.bookshelf-glow {
-  position: absolute;
-  inset: -25% -15% -10% -15%;
-  background: radial-gradient(circle at 60% 35%, rgba(217, 154, 61, 0.28), transparent 60%);
-  pointer-events: none;
-  animation: bookshelf-breathe 8s ease-in-out infinite;
-}
-
-@keyframes bookshelf-breathe {
-  0%, 100% { opacity: 0.85; }
-  50% { opacity: 1; }
-}
-
-.bookshelf-group {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 26px;
-  transform-style: preserve-3d;
-  transform: rotateY(-12deg);
-}
-
-.bookshelf-book {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: var(--spine-w, 36px);
-  height: 200px;
-  flex-shrink: 0;
-  transform-style: preserve-3d;
-  border-radius: 4px;
-}
-
-.bookshelf-book:hover,
-.bookshelf-book:focus-visible {
-  z-index: 10;
-}
-
-.bookshelf-book:focus-visible {
-  outline: 2px solid #d99a3d;
-  outline-offset: 4px;
-}
-
-.bookshelf-book-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transform-origin: left center;
-  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.bookshelf-book:hover .bookshelf-book-inner,
-.bookshelf-book:focus-visible .bookshelf-book-inner {
-  transform: rotateY(-40deg);
-}
-
-.bookshelf-spine {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, var(--spine-top), var(--spine-bottom));
-  border-radius: 3px 1px 1px 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backface-visibility: hidden;
-  box-shadow:
-    inset -3px 0 6px rgba(0, 0, 0, 0.3),
-    inset 2px 0 0 rgba(255, 255, 255, 0.15);
-}
-
-.bookshelf-spine-label {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
+/* Mono micro-label used for section indices, level numbers and readouts */
+.hud-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: rgba(15, 20, 25, 0.85);
-  white-space: nowrap;
-  max-height: 92%;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
-.bookshelf-cover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 44px;
-  height: 100%;
-  transform-origin: left center;
-  transform: translateX(var(--spine-w, 36px)) rotateY(90deg);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.3));
-  border-radius: 0 2px 2px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 4px;
-  backface-visibility: hidden;
+/* Four corner brackets drawn with layered gradients — no extra DOM */
+.hud-corners {
+  --hud-c: rgba(255, 255, 255, 0.35);
+  --hud-len: 18px;
+  --hud-w: 1.5px;
+  background:
+    linear-gradient(var(--hud-c), var(--hud-c)) top left / var(--hud-len) var(--hud-w),
+    linear-gradient(var(--hud-c), var(--hud-c)) top left / var(--hud-w) var(--hud-len),
+    linear-gradient(var(--hud-c), var(--hud-c)) top right / var(--hud-len) var(--hud-w),
+    linear-gradient(var(--hud-c), var(--hud-c)) top right / var(--hud-w) var(--hud-len),
+    linear-gradient(var(--hud-c), var(--hud-c)) bottom left / var(--hud-len) var(--hud-w),
+    linear-gradient(var(--hud-c), var(--hud-c)) bottom left / var(--hud-w) var(--hud-len),
+    linear-gradient(var(--hud-c), var(--hud-c)) bottom right / var(--hud-len) var(--hud-w),
+    linear-gradient(var(--hud-c), var(--hud-c)) bottom right / var(--hud-w) var(--hud-len);
+  background-repeat: no-repeat;
 }
 
-.bookshelf-cover-tag {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.75);
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-height: 90%;
+/* Faint CRT scanlines over hero footage */
+.hud-scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.025) 0px,
+    rgba(255, 255, 255, 0.025) 1px,
+    transparent 1px,
+    transparent 3px
+  );
 }
 
-.bookshelf-plank {
-  height: 14px;
-  margin-top: -2px;
-  background: linear-gradient(180deg, #3a2a1a, #1f150c);
-  border-radius: 2px;
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.45);
+/* Slow push-in on the active hero still */
+@keyframes hero-push {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
+}
+
+.hero-push {
+  animation: hero-push 7s var(--ease-out) both;
+}
+
+/* Level card: brackets tighten in on hover / focus */
+.level-card .level-brackets {
+  --hud-c: #ff5a4f;
+  opacity: 0;
+  inset: 14px;
+  transition: opacity 300ms var(--ease-out), inset 400ms var(--ease-out);
+}
+
+.level-card:hover .level-brackets,
+.level-card:focus-visible .level-brackets {
+  opacity: 1;
+  inset: 10px;
 }

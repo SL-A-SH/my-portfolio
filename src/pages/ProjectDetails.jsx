@@ -2,12 +2,11 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import usePageMeta from '../hooks/usePageMeta';
 
+// Games carry the signal accent; everything else stays neutral so the games read as the hero
 const CATEGORY_COLORS = {
-  'Mobile Apps':       { label: 'text-indigo-400',  badge: 'bg-indigo-600/20 text-indigo-400 border-indigo-500/30' },
-  'Game Development':  { label: 'text-sky-400',     badge: 'bg-sky-600/20 text-sky-400 border-sky-500/30'   },
-  'Professional Work': { label: 'text-emerald-400', badge: 'bg-emerald-600/20 text-emerald-400 border-emerald-500/30' },
+  'Game Development':  { label: 'text-brand-accent', badge: 'bg-brand-accent/10 text-brand-accent border-brand-accent/30' },
 };
-const getCategoryColors = (cat) => CATEGORY_COLORS[cat] ?? { label: 'text-indigo-400', badge: 'bg-indigo-600/20 text-indigo-400 border-indigo-500/30' };
+const getCategoryColors = (cat) => CATEGORY_COLORS[cat] ?? { label: 'text-gray-400', badge: 'bg-white/5 text-gray-300 border-white/15' };
 import { projects } from '../constants/projects';
 import { ExternalLink, AlertTriangle, ArrowLeft } from 'lucide-react';
 import FeatureGrid from '../components/FeatureGrid';
@@ -19,7 +18,7 @@ const getYouTubeId = (url) => {
   return match ? match[1] : null;
 };
 
-const YouTubeFacade = ({ src, title }) => {
+const YouTubeFacade = ({ src, poster, title }) => {
   const [active, setActive] = useState(false);
   const videoId = getYouTubeId(src);
   if (!videoId) return null;
@@ -43,13 +42,13 @@ const YouTubeFacade = ({ src, title }) => {
       aria-label={`Play ${title}`}
     >
       <img
-        src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+        src={poster ?? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
         alt={`${title} preview`}
         className="w-full h-full object-cover"
       />
-      <div className="absolute inset-0 flex items-center justify-center bg-black/25 group-hover:bg-black/35 transition-colors">
-        <div className="bg-red-600 rounded-full p-5 shadow-xl group-hover:scale-110 transition-transform">
-          <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+      <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+        <div className="bg-brand-accent rounded-full p-5 shadow-xl group-hover:scale-110 transition-transform">
+          <svg className="w-10 h-10 text-brand-base" fill="currentColor" viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z"/>
           </svg>
         </div>
@@ -126,7 +125,7 @@ const ProjectDetails = () => {
           {project.media?.type === 'youtube' ?
           (
             <div className="relative pt-[56.25%] rounded-xl overflow-hidden bg-gradient-to-br from-brand-card to-brand-surface border border-gray-700/50">
-              <YouTubeFacade src={project.media.src} title={project.title} />
+              <YouTubeFacade src={project.media.src} poster={project.media.poster} title={project.title} />
             </div>
           )
           : project.media?.type === 'screenshots' ?
